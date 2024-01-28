@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "manimextra"
+version = "0.1"
+description = ""
+authors = ["Merzlikin-Matvey <merzlikinmatvey01@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.12.1"
+manim = "^0.18.0"
+setuptools = "^69.0.3"
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
