@@ -1,6 +1,5 @@
 import manim
-from manim import UP, DOWN, LEFT, RIGHT, UR, UL, DR, DL, PI
-
+from manim.constants import *
 
 from ..useful_in_development import *
 
