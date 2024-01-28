@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "manimextra"
-version = "0.1"
+version = "1.0"
 description = ""
 authors = ["Merzlikin-Matvey <merzlikinmatvey01@gmail.com>"]
 readme = "README.md"
@@ -9,8 +9,6 @@ readme = "README.md"
 python = "3.12.1"
 manim = "^0.18.0"
 setuptools = "^69.0.3"
-
-
 
 [build-system]
 requires = ["poetry-core"]
