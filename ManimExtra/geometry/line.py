@@ -44,3 +44,18 @@ class Line(manim.Line):
         ).rotate(int(rotate) * np.pi)
         return manim.VGroup(*[elem.copy() for i in range(n)]).arrange(buff=buff, direction=RIGHT).move_to(
             self.get_center()).rotate(about_point=self.get_center(), angle=self.get_angle()).set_z_index(1)
+
+
+class Angle(manim.Angle):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+    def get_label_center(self, radius=0.75) -> np.ndarray:
+        A = self.get_lines()[0].get_end()
+        B = self.get_lines()[0].get_start()
+        C = self.get_lines()[1].get_end()
+        A, B, C = dot_to_array(A, B, C)
+
+        return Line(B, Line(A, C).point_from_proportion(((Line(A, C).get_length() * Line(A, B).get_length()) / (
+                Line(B, C).get_length() + Line(A, B).get_length())) / Line(A, C).get_length())).set_length_about_point(
+            B, radius).get_end()
