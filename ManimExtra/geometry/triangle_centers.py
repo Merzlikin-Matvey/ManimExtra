@@ -1,6 +1,3 @@
-import numpy as np
-
-from ..useful_in_development import *
 from .default import *
 
 
