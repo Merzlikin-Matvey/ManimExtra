@@ -1,5 +1,7 @@
 import manim
+from manim import Angle
 from manim.constants import *
+
 from ..useful_in_development import *
 import numpy as np
 
@@ -68,6 +70,12 @@ class Angle(manim.Angle):
                 Line(B, C).get_length() + Line(A, B).get_length())) / Line(A, C).get_length())).set_length_about_point(
             B, radius).get_end()
 
+    @staticmethod
+    def from_three_points(A, B, C,auto_dot, auto_dot_to_array=True, **kwargs) -> Angle:
+        angle = super().from_three_points(A, B, C, **kwargs)
+        if angle.get_angle() > PI:
+            angle = super().from_three_points(C, B, A, **kwargs)
+        return angle
 
 class Circle(manim.Circle):
     def __init__(self, **kwargs):
@@ -77,7 +85,6 @@ class Circle(manim.Circle):
     def from_three_points(p1, p2, p3, auto_dot_to_array=True, **kwargs):
         if auto_dot_to_array:
             p1, p2, p3 = dot_to_array(p1, p2, p3)
-        print(p1, p2, p3)
         center = manim.line_intersection(
             manim.perpendicular_bisector([p1, p2]),
             manim.perpendicular_bisector([p2, p3]),
@@ -91,7 +98,10 @@ class Circle(manim.Circle):
                      self.radius ** 2, 4)
 
     def is_point_in_circle(self, dot):
+        dot = dot_to_array(dot)[0]
         return self.pow(dot) == 0
 
 
-
+class Dot(manim.Dot):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
