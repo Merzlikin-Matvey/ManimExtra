@@ -91,7 +91,7 @@ class Perpendicular(Line):
         super().__init__(perpendicular.get_start(), perpendicular.get_end(), **kwargs)
 
     def get_line(self) -> Line:
-        return self.line
+        return self.linez
 
     def get_vertex(self) -> np.ndarray:
         return self.vertex

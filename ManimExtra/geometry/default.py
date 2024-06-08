@@ -7,7 +7,6 @@ import numpy as np
 
 
 class Line(manim.Line):
-
     def __init__(self, start=LEFT, end=manim.RIGHT, auto_dot_to_array=True, **kwargs):
         if auto_dot_to_array:
             start, end = dot_to_array(start, end)
@@ -57,8 +56,8 @@ class Line(manim.Line):
 
 
 class Angle(manim.Angle):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
     def get_label_center(self, radius=0.75):
         A = self.get_lines()[0].get_end()
@@ -71,11 +70,12 @@ class Angle(manim.Angle):
             B, radius).get_end()
 
     @staticmethod
-    def from_three_points(A, B, C,auto_dot, auto_dot_to_array=True, **kwargs) -> Angle:
-        angle = super().from_three_points(A, B, C, **kwargs)
-        if angle.get_angle() > PI:
-            angle = super().from_three_points(C, B, A, **kwargs)
+    def from_three_points(A, B, C, auto_dot_to_array=True, **kwargs) -> Angle:
+        angle = manim.Angle.from_three_points(A, B, C, **kwargs)
+        if angle.get_angle_value() > PI:
+            angle = manim.Angle.from_three_points(C, B, A, **kwargs)
         return angle
+
 
 class Circle(manim.Circle):
     def __init__(self, **kwargs):
@@ -103,5 +103,5 @@ class Circle(manim.Circle):
 
 
 class Dot(manim.Dot):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
