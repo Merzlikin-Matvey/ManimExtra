@@ -1,5 +1,4 @@
 import manim
-from manim import Angle
 from manim.constants import *
 
 from ..useful_in_development import *
@@ -59,27 +58,51 @@ class Angle(manim.Angle):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    def get_label_center(self, radius=0.75):
-        A = self.get_lines()[0].get_end()
-        B = self.get_lines()[0].get_start()
-        C = self.get_lines()[1].get_end()
+    @staticmethod
+    def from_three_points(A, B, C, auto_dot_to_array=True, **kwargs):
+        angle = Angle(Line(B, A), Line(B, C), **kwargs)
+        if angle.get_angle_value() > PI:
+            angle = Angle(Line(B, C), Line(B, A), **kwargs)
+        return angle
+
+    def get_label_center(self, delta=0.25):
+        A = self.lines[0].get_end()
+        B = self.lines[0].get_start()
+        C = self.lines[1].get_end()
         A, B, C = dot_to_array(A, B, C)
 
-        return Line(B, Line(A, C).point_from_proportion(((Line(A, C).get_length() * Line(A, B).get_length()) / (
-                Line(B, C).get_length() + Line(A, B).get_length())) / Line(A, C).get_length())).set_length_about_point(
-            B, radius).get_end()
+        try:
+            radius = self.radius
+        except AttributeError:
+            inter = manim.line_intersection(
+                [self.lines[0].get_start(), self.lines[0].get_end()],
+                [self.lines[1].get_start(), self.lines[1].get_end()],
+            )
 
-    @staticmethod
-    def from_three_points(A, B, C, auto_dot_to_array=True, **kwargs) -> Angle:
-        angle = manim.Angle.from_three_points(A, B, C, **kwargs)
-        if angle.get_angle_value() > PI:
-            angle = manim.Angle.from_three_points(C, B, A, **kwargs)
-        return angle
+            if self.quadrant[0] == 1:
+                dist_1 = np.linalg.norm(self.lines[0].get_end() - inter)
+            else:
+                dist_1 = np.linalg.norm(self.lines[0].get_start() - inter)
+            if self.quadrant[1] == 1:
+                dist_2 = np.linalg.norm(self.lines[1].get_end() - inter)
+            else:
+                dist_2 = np.linalg.norm(self.lines[1].get_start() - inter)
+            if np.minimum(dist_1, dist_2) < 0.6:
+                radius = (2 / 3) * np.minimum(dist_1, dist_2)
+            else:
+                radius = 0.4
+
+        center = Line(B, Line(A, C).point_from_proportion(((Line(A, C).get_length() * Line(A, B).get_length()) / (
+                Line(B, C).get_length() + Line(A, B).get_length())) / Line(A, C).get_length())).set_length_about_point(
+            B,  delta + radius).get_end()
+
+        return center
+
 
 
 class Circle(manim.Circle):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
     @staticmethod
     def from_three_points(p1, p2, p3, auto_dot_to_array=True, **kwargs):
