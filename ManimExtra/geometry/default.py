@@ -19,6 +19,7 @@ class Line(manim.Line):
         return round(np.linalg.det(np.array([[x1, y1, 1], [x2, y2, 1], [x3, y3, 1]])), 3) == 0
 
     def set_length_about_point(self, dot, length):
+        dot = dot_to_array(dot)[0]
         A = dot + np.array([length, 0, 0])
         line = Line(dot, A).rotate(about_point=dot, angle=self.get_angle())
         self.put_start_and_end_on(line.get_start(), line.get_end())
