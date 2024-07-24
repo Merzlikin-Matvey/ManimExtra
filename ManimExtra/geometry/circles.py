@@ -5,10 +5,13 @@ import numpy as np
 from .default import Line, Circle, Dot, Angle
 from .intersection import intersection_circles
 from ..useful_in_development import *
+from .triangle_centers import Incenter
 
 
 __all__ = [
-    "Tangent"
+    "Tangent",
+    "Incircle",
+
 ]
 
 class Tangent(Line):
@@ -31,6 +34,18 @@ class Tangent(Line):
         return Tangent(self.circle, self.dot, is_other_tangent=(not self.is_other_tangent))
 
 
+class Incircle(Circle):
+    def __init__(self, A, B, C, *args, **kwargs):
+        A, B, C = dot_to_array(A, B, C)
+        I = Incenter(A, B, C).get_center()
+        a = distance(B, C)
+        b = distance(A, C)
+        c = distance(A, B)
+        p = (a + b + c) / 2
+        r = np.sqrt((p - a) * (p - b) * (p - c) / p)
+        super().__init__(radius=r, arc_center=I, *args, **kwargs)
+        
+        
 
 
 
