@@ -124,6 +124,10 @@ class Circle(manim.Circle):
     def is_point_in_circle(self, dot):
         dot = dot_to_array(dot)[0]
         return self.pow(dot) == 0
+    
+    def get_diametrically_opposite_point(self, dot):
+        dot = dot_to_array(dot)[0]
+        return self.get_center() + self.get_center() - dot
 
 
 class Dot(manim.Dot):
