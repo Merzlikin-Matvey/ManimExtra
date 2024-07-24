@@ -35,7 +35,7 @@ def intersection_circles(circle_1: Circle, circle_2: Circle) -> tuple[np.ndarray
     if l > r1 + r2 + 0.02:
         raise Exception('Circles do not intersect')
 
-    x1 = Dot(Line(o1, o2).set_length_about_point(o1, r1).get_end())
+    x1 = Dot(Line(o1, o2).set_length_about_point(r1, o1).get_end())
     x2 = x1.copy()
 
     alpha = np.arccos(round((r2 ** 2 - r1 ** 2 - l ** 2) / (-2 * r1 * l), 4))
@@ -49,7 +49,7 @@ def intersection_line_and_circle(line: Line, circle: Circle) -> tuple[np.ndarray
     o, r = circle.get_center(), circle.radius
     h = Line(line.get_projection(o), o).get_length()
     alpha = np.arccos(round(h / r, 4))
-    x1 = Dot(Line(o, line.get_projection(o)).set_length_about_point(o, r).get_end())
+    x1 = Dot(Line(o, line.get_projection(o)).set_length_about_point(r, o).get_end())
     x2 = x1.copy()
     x1.rotate(about_point=o, angle=alpha)
     x2.rotate(about_point=o, angle=-alpha)

@@ -95,7 +95,7 @@ class Angle(manim.Angle):
 
         center = Line(B, Line(A, C).point_from_proportion(((Line(A, C).get_length() * Line(A, B).get_length()) / (
                 Line(B, C).get_length() + Line(A, B).get_length())) / Line(A, C).get_length())).set_length_about_point(
-            B,  delta + radius).get_end()
+            delta + radius, B).get_end()
 
         return center
 

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "manimextra"
-version = "1.8.1"
+version = "1.8.2"
 description = ""
 authors = ["Merzlikin-Matvey <merzlikinmatvey01@gmail.com>"]
 readme = "README.md"

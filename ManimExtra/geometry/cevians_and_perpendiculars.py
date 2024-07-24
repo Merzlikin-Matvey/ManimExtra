@@ -80,7 +80,7 @@ class Perpendicular(Line):
         A, B = line.get_start(), line.get_end()
         if Line(A, B).is_point_in_line(X):
             perpendicular = Line(A, X).rotate(
-                about_point=X, angle=PI / 2 + int(rotate)*PI).set_length_about_point(X, length)
+                about_point=X, angle=PI / 2 + int(rotate)*PI).set_length_about_point(length, X)
         else:
             perpendicular = Line(X, Line(A, B).get_projection(X))
 
