@@ -57,6 +57,31 @@ class Line(manim.Line):
 
 class Angle(manim.Angle):
     def __init__(self, *args, **kwargs):
+        radius = kwargs.get("radius", None)
+        quadrant = kwargs.get("quadrant", [1, 1])
+        inter = manim.line_intersection(
+            [args[0].get_start(), args[0].get_end()],
+            [args[1].get_start(), args[1].get_end()],
+        )
+        line1 = args[0]
+        line2 = args[1]
+        if radius is None:
+            if quadrant[0] == 1:
+                dist_1 = np.linalg.norm(line1.get_end() - inter)
+            else:
+                dist_1 = np.linalg.norm(line1.get_start() - inter)
+            if quadrant[1] == 1:
+                dist_2 = np.linalg.norm(line2.get_end() - inter)
+            else:
+                dist_2 = np.linalg.norm(line2.get_start() - inter)
+            if np.minimum(dist_1, dist_2) < 0.6:
+                radius = (2 / 3) * np.minimum(dist_1, dist_2)
+            else:
+                radius = 0.4
+            self.radius = radius
+        else:
+            self.radius = radius
+        kwargs["radius"] = self.radius
         super().__init__(*args, **kwargs)
 
     @staticmethod
