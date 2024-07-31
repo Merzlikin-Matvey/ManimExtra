@@ -1,16 +1,18 @@
 from __future__ import annotations
 
-import numpy as np
+from manim.constants import *
 
 from .default import Line, Circle, Dot, Angle
 from .intersection import intersection_circles
 from ..useful_in_development import *
-from .triangle_centers import Incenter
+from .triangle_centers import *
 
 
 __all__ = [
     "Tangent",
     "Incircle",
+    "Circumcircle",
+    "CarnotCircle"
 
 ]
 
@@ -44,8 +46,22 @@ class Incircle(Circle):
         p = (a + b + c) / 2
         r = np.sqrt((p - a) * (p - b) * (p - c) / p)
         super().__init__(radius=r, arc_center=I, *args, **kwargs)
-        
-        
+
+
+class Circumcircle(Circle):
+    def __init__(self, A, B, C, *args, **kwargs):
+        A, B, C = dot_to_array(A, B, C)
+        O = Circumcenter(A, B, C).get_center()
+        r = distance(O, A)
+        super().__init__(radius=r, arc_center=O, *args, **kwargs)
+
+
+class CarnotCircle(Circle):
+    def __init__(self, A, B, C, *args, **kwargs):
+        A, B, C = dot_to_array(A, B, C)
+        circle = Circumcircle(A, B, C)
+        circle.rotate(PI, about_point=Line(A, C).get_projection(circle.get_center()))
+        super().__init__(radius=circle.get_radius(), arc_center=circle.get_center(), *args, **kwargs)
 
 
 

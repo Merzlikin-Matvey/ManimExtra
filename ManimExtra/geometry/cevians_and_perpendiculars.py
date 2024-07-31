@@ -13,7 +13,8 @@ __all__ = [
     "Perpendicular",
     "Altitude",
     "PerpendicularBisector",
-    "Symmedian"
+    "Symmedian",
+    "EuclidLine",
 ]
 
 
@@ -133,3 +134,12 @@ class Altitude(Perpendicular):
         A, B, C = dot_to_array(A, B, C)
         line = Line(A, C)
         super().__init__(line, B, **kwargs)
+
+
+class EuclidLine(Line):
+    def __init__(self, A, B, C, **kwargs):
+        A, B, C = dot_to_array(A, B, C)
+        line = Line(A, C).move_to(B)
+        super().__init__(line.get_start(), line.get_end(), **kwargs)
+
+
