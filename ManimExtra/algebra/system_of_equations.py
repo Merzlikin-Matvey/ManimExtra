@@ -18,6 +18,8 @@ class SystemOfEquations(VGroup):
     ):
         self.equations = VGroup(*equations).arrange(DOWN, buff=buff_between_equations)
         self.is_bracket = is_bracket
+        self.buff_between_equations = buff_between_equations
+        self.buff_between_brace_and_equations = buff_between_brace_and_equations
 
         max_width = max([equ.get_width() for equ in self.equations])
         for equ in self.equations:
@@ -37,3 +39,15 @@ class SystemOfEquations(VGroup):
 
         self.brace.next_to(self.equations, LEFT, buff=buff_between_brace_and_equations)
         super().__init__(self.equations, self.brace)
+
+    def swap(self, i, j):
+        self.equations[i], self.equations[j] = self.equations[j], self.equations[i]
+
+        self.equations.arrange(DOWN, buff=self.buff_between_equations)
+        max_width = max([equ.get_width() for equ in self.equations])
+        for equ in self.equations:
+            delta = (max_width - equ.get_width()) / 2
+            equ.shift(LEFT * delta)
+
+        self.brace.next_to(self.equations, LEFT, buff=self.buff_between_brace_and_equations)
+        return self

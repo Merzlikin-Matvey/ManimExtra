@@ -11,7 +11,8 @@ from ..useful_in_development import *
 from ..geometry.default import Line
 
 __all__ = [
-    "Bracket"
+    "Bracket",
+    "BracketBetweenPoints"
 ]
 
 
@@ -55,5 +56,4 @@ class BracketBetweenPoints(Bracket):
             line_vector = np.array(point_2) - np.array(point_1)
             direction = np.array([line_vector[1], -line_vector[0], 0])
             direction = direction / np.linalg.norm(direction)
-        print(point_1, point_2, direction)
         super().__init__(Line(point_1, point_2), direction=direction, **kwargs)

@@ -9,9 +9,7 @@ __all__ = [
 
 class TransformSystem(AnimationGroup):
     def __init__(self, system_1, system_2, **kwargs):
-        group = []
-
-        group.append(Transform(system_1.brace, system_2.brace))
+        group = [Transform(system_1.brace, system_2.brace)]
 
         equations_1 = system_1.equations
         equations_2 = system_2.equations
