@@ -121,6 +121,7 @@ class Mittenpunkt(Dot):
             (b + c - a), (c + a - b), (a + b - c)
         )), **kwargs)
 
+
 class SpiekerCenter(Dot):
     def __init__(self, A, B, C, **kwargs):
         A, B, C = dot_to_array(A, B, C)
