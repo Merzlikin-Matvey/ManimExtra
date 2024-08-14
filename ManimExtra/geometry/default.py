@@ -6,7 +6,7 @@ import numpy as np
 
 
 class Line(manim.Line):
-    def __init__(self, start=LEFT, end=manim.RIGHT, auto_dot_to_array=True, **kwargs):
+    def __init__(self, start=LEFT, end=RIGHT, auto_dot_to_array=True, **kwargs):
         if auto_dot_to_array:
             start, end = dot_to_array(start, end)
         super().__init__(start, end, **kwargs)

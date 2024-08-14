@@ -10,7 +10,7 @@ from manim import (
     FadeIn
 )
 
-from manim.utils.color import *
+from manim.utils.color.manim_colors import *
 
 from ..geometry.default import *
 
@@ -233,5 +233,11 @@ class UnitCircle(VGroup):
         return ArcBetweenPoints(self.circle.point_at_angle(start), self.circle.point_at_angle(end),
                                 radius=self.circle.get_radius(), **kwargs)
 
+    def get_abscissa_point(self, point):
+        alpha = (1 + point) / 2
+        return self.horizontal.point_from_proportion(alpha)
 
+    def get_ordinate_point(self, point):
+        alpha = (1 + point) / 2
+        return self.vertical.point_from_proportion(alpha)
 
