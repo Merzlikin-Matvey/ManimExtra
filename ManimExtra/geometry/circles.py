@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from manim.constants import *
 
-from .default import Line, Circle, Dot, Angle
+from .default import *
 from .intersection import intersection_circles
 from ..useful_in_development import *
 from .triangle_centers import *
@@ -12,14 +12,16 @@ __all__ = [
     "Tangent",
     "Incircle",
     "Circumcircle",
+    "NinePointCircle",
     "CarnotCircle"
 
 ]
 
+
 class Tangent(Line):
     def __init__(self, circle: Circle, dot: Dot, is_other_tangent=False, **kwargs):
         dot = dot_to_array(dot)[0]
-        if (circle.pow(dot) < 0):
+        if circle.pow(dot) < 0:
             raise Exception("Dot is inside the circle")
 
         self.circle = circle
@@ -53,6 +55,15 @@ class Circumcircle(Circle):
         A, B, C = dot_to_array(A, B, C)
         O = Circumcenter(A, B, C).get_center()
         r = distance(O, A)
+        super().__init__(radius=r, arc_center=O, *args, **kwargs)
+
+
+class NinePointCircle(Circle):
+    def __init__(self, A, B, C, *args, **kwargs):
+        A, B, C = dot_to_array(A, B, C)
+        r = distance(Circumcenter(A, B, C).get_center(), A) / 2
+        print(r)
+        O = NinePointCenter(A, B, C).get_center()
         super().__init__(radius=r, arc_center=O, *args, **kwargs)
 
 

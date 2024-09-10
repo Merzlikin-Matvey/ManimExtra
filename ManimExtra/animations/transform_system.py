@@ -18,6 +18,8 @@ __all__ = [
 
 class TransformSystem(AnimationGroup):
     def __init__(self, system_1, system_2, **kwargs):
+        self.system_1 = system_1
+        self.system_2 = system_2
         group = [Transform(system_1.brace, system_2.brace)]
 
         equations_1 = system_1.equations
@@ -39,6 +41,15 @@ class TransformSystem(AnimationGroup):
 
         super().__init__(*group, **kwargs)
 
+    def clean_up_from_scene(self, scene):
+        super().clean_up_from_scene(scene)
+        for eq in self.system_1.equations:
+            scene.remove(eq)
+        scene.remove(self.system_1.brace)
+        for eq in self.system_2.equations:
+            scene.remove(eq)
+        scene.remove(self.system_2.brace)
+        scene.add(self.system_2)
 
 class SwapEquations(AnimationGroup):
     def __init__(self, system, i, j, **kwargs):

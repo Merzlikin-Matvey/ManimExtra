@@ -121,7 +121,12 @@ class UnitCircle(VGroup):
         anim = FadeIn(VGroup(dot, label), **anim_args)
         return anim
 
+    def _normalize_labels(self):
+        VGroup(self.right, self.up, self.left, self.down, self.right_label, self.up_label, self.left_label,
+                 self.down_label).move_to(self.circle.get_center())
+
     def show_labels(self):
+        self._normalize_labels()
         self.add(self.right, self.up, self.left, self.down, self.right_label, self.up_label, self.left_label,
                  self.down_label)
         return self
@@ -133,6 +138,7 @@ class UnitCircle(VGroup):
 
     @override_animate(show_labels)
     def _show_labels_animation(self, anim_args=None):
+        self._normalize_labels()
         if anim_args is None:
             anim_args = {}
         anim = AnimationGroup(
