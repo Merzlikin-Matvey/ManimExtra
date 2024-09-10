@@ -3,7 +3,7 @@ import math
 from manim import (
     MathTex,
     VGroup,
-    ArcBetweenPoints,
+    Arc,
     FadeOut,
     AnimationGroup,
     override_animate,
@@ -100,6 +100,18 @@ class UnitCircle(VGroup):
 
         super().__init__(self.circle, self.labels, self.dots)
 
+    def change_right_point(self):
+        if self.other_right_basic_label:
+            self.right_label = UnitCircleLabel(direction=RIGHT, repeats=self.repeats, font_size=self.font_size).next_to(
+                self.right, RIGHT, buff=self.label_buff)
+        else:
+            self.right_label = UnitCircleLabel(direction=RIGHT, repeats=self.repeats + 1,
+                                               font_size=self.font_size).next_to(
+                self.right, RIGHT, buff=self.label_buff)
+
+        self.other_right_basic_label = not self.other_right_basic_label
+        return self
+
     def get_center(self):
         return self.circle.get_center()
 
@@ -123,7 +135,7 @@ class UnitCircle(VGroup):
 
     def _normalize_labels(self):
         VGroup(self.right, self.up, self.left, self.down, self.right_label, self.up_label, self.left_label,
-                 self.down_label).move_to(self.circle.get_center())
+               self.down_label).move_to(self.circle.get_center())
 
     def show_labels(self):
         self._normalize_labels()
@@ -235,10 +247,6 @@ class UnitCircle(VGroup):
             FadeOut(self.vertical, **anim_args)
         )
 
-    def get_arc(self, start, end, **kwargs):
-        return ArcBetweenPoints(self.circle.point_at_angle(start), self.circle.point_at_angle(end),
-                                radius=self.circle.get_radius(), **kwargs)
-
     def get_abscissa_point(self, point):
         alpha = (1 + point) / 2
         return self.horizontal.point_from_proportion(alpha)
@@ -247,3 +255,11 @@ class UnitCircle(VGroup):
         alpha = (1 + point) / 2
         return self.vertical.point_from_proportion(alpha)
 
+    def get_arc(self, start, end, **kwargs):
+        if (start > end):
+            start, end = end, start
+
+        angle = end - start
+        return Arc(arc_center=self.circle.get_center(), radius=self.circle.get_radius(),
+                   start_angle=start, angle=angle,
+                   **kwargs)
