@@ -64,6 +64,7 @@ class UnitCircleLabel(MathTex):
 class UnitCircle(VGroup):
     def __init__(self, point=0, radius=1.5, color=BLUE, label_buff=0.2, font_size=32, fractions=True):
         self.circle = Circle(radius=radius, color=color)
+        self.circle.set_z_index(-5)
 
         self.labels = VGroup()
         self.dots = VGroup()
@@ -163,6 +164,8 @@ class UnitCircle(VGroup):
             FadeIn(self.left_label, **anim_args),
             FadeIn(self.down_label, **anim_args)
         )
+        self.add(self.right, self.up, self.left, self.down, self.right_label, self.up_label, self.left_label,
+                 self.down_label)
         return anim
 
     @override_animate(hide_labels)
@@ -179,6 +182,7 @@ class UnitCircle(VGroup):
             FadeOut(self.left_label, **anim_args),
             FadeOut(self.down_label, **anim_args)
         )
+        self.hide_labels()
         return anim
 
     def show_horizontal(self):
@@ -256,10 +260,13 @@ class UnitCircle(VGroup):
         return self.vertical.point_from_proportion(alpha)
 
     def get_arc(self, start, end, **kwargs):
-        if (start > end):
+        if start > end:
             start, end = end, start
 
         angle = end - start
         return Arc(arc_center=self.circle.get_center(), radius=self.circle.get_radius(),
                    start_angle=start, angle=angle,
                    **kwargs)
+
+    def point_at_angle(self, angle):
+        return self.circle.point_at_angle(angle)

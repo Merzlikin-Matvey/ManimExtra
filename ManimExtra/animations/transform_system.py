@@ -51,6 +51,7 @@ class TransformSystem(AnimationGroup):
         scene.remove(self.system_2.brace)
         scene.add(self.system_2)
 
+
 class SwapEquations(AnimationGroup):
     def __init__(self, system, i, j, **kwargs):
         self.system = system
