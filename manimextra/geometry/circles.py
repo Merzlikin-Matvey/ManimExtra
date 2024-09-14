@@ -73,7 +73,3 @@ class CarnotCircle(Circle):
         circle = Circumcircle(A, B, C)
         circle.rotate(PI, about_point=Line(A, C).get_projection(circle.get_center()))
         super().__init__(radius=circle.get_radius(), arc_center=circle.get_center(), *args, **kwargs)
-
-
-
-

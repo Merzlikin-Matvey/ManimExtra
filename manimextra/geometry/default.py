@@ -24,7 +24,7 @@ class Line(manim.Line):
         line = Line(dot, A).rotate(about_point=dot, angle=self.get_angle())
         self.put_start_and_end_on(line.get_start(), line.get_end())
         return self
-    
+
     def get_distance(self, dot):
         dot = dot_to_array(dot)[0]
         return Line(dot, self.get_projection(dot)).get_length()
@@ -118,12 +118,13 @@ class Angle(manim.Angle):
             else:
                 radius = 0.4
 
-        center = Line(B, Line(A, C).point_from_proportion(((Line(A, C).get_length() * Line(A, B).get_length()) / (
-                Line(B, C).get_length() + Line(A, B).get_length())) / Line(A, C).get_length())).set_length_about_point(
-            delta + radius, B).get_end()
+        center = Line(B, Line(A, C).point_from_proportion(
+            ((Line(A, C).get_length() * Line(A, B).get_length()) /
+             (Line(B, C).get_length() + Line(A, B).get_length())) /
+            Line(A, C).get_length()
+        )).set_length_about_point(delta + radius, B).get_end()
 
         return center
-
 
 
 class Circle(manim.Circle):
@@ -149,7 +150,7 @@ class Circle(manim.Circle):
     def is_point_in_circle(self, dot):
         dot = dot_to_array(dot)[0]
         return self.pow(dot) == 0
-    
+
     def get_diametrically_opposite_point(self, dot):
         dot = dot_to_array(dot)[0]
         return self.get_center() + self.get_center() - dot

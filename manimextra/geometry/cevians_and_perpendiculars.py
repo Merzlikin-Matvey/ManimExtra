@@ -44,17 +44,15 @@ class Cevian(Line):
 class Bisector(Cevian):
     def __init__(self, A, B, C, **kwargs):
         A, B, C = dot_to_array(A, B, C)
-        alpha = ((Line(A, C).get_length() * Line(A, B).get_length()) / (
-                    Line(B, C).get_length() + Line(A, B).get_length())) / Line(A, C).get_length()
+        alpha = ((Line(A, C).get_length() * Line(A, B).get_length()) /
+                 (Line(B, C).get_length() + Line(A, B).get_length())) / Line(A, C).get_length()
         super().__init__(A, B, C, alpha, **kwargs)
 
     def get_bisected_angles(self, radius_alpha=1.1, *args, **kwargs) -> VGroup(Angle, Angle):
-            first_angle = Angle.from_three_points(self.extra_vertex_1, self.general_vertex, self.foot, **kwargs)
-            kwargs['radius'] = first_angle.radius * radius_alpha
-            second_angle = Angle.from_three_points(self.extra_vertex_2, self.general_vertex, self.foot, **kwargs)
-            return VGroup(first_angle, second_angle)
-
-
+        first_angle = Angle.from_three_points(self.extra_vertex_1, self.general_vertex, self.foot, **kwargs)
+        kwargs['radius'] = first_angle.radius * radius_alpha
+        second_angle = Angle.from_three_points(self.extra_vertex_2, self.general_vertex, self.foot, **kwargs)
+        return VGroup(first_angle, second_angle)
 
 
 class Median(Cevian):
@@ -83,7 +81,7 @@ class Perpendicular(Line):
         A, B = line.get_start(), line.get_end()
         if Line(A, B).is_point_in_line(X):
             perpendicular = Line(A, X).rotate(
-                about_point=X, angle=PI / 2 + int(rotate)*PI).set_length_about_point(length, X)
+                about_point=X, angle=PI / 2 + int(rotate) * PI).set_length_about_point(length, X)
         else:
             perpendicular = Line(X, Line(A, B).get_projection(X))
 
@@ -141,5 +139,3 @@ class EuclidLine(Line):
         A, B, C = dot_to_array(A, B, C)
         line = Line(A, C).move_to(B)
         super().__init__(line.get_start(), line.get_end(), **kwargs)
-
-

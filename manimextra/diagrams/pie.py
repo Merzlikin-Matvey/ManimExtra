@@ -18,7 +18,7 @@ PIE_CHART_COLORS = [
 
 
 class PieChartSector(AnnularSector):
-    def __init__(self, value, percent, label,  *args, **kwargs):
+    def __init__(self, value, percent, label, *args, **kwargs):
         self.value = value
         self.percent = percent
         self.label = label
@@ -95,5 +95,3 @@ class PieChart(VGroup):
                 if sector.label == label:
                     return sector
         raise ValueError("No sector with that value or label found")
-
-

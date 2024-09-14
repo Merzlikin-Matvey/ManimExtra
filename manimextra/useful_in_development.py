@@ -10,7 +10,7 @@ def dot_to_array(*dots) -> list:
         else:
             try:
                 coordinates.append(dot.get_center())
-            except:
+            except AttributeError:
                 pass
     return coordinates
 
@@ -29,4 +29,3 @@ def circle_symmetry(circle: manim.Circle, dot) -> np.ndarray:
 def distance(A, B) -> float:
     A, B = dot_to_array(A, B)
     return np.sqrt((A[0] - B[0])**2 + (A[1] - B[1])**2 + (A[2] - B[2])**2)
-

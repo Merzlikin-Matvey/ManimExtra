@@ -91,7 +91,7 @@ class InsertEquation(AnimationGroup):
             delta = system.buff_between_equations + eq.get_height()
             eq.move_to(
                 system.equations[index].get_center() + (
-                        system.equations[index].get_height() - eq.get_height()) / 2 * UP +
+                    system.equations[index].get_height() - eq.get_height()) / 2 * UP +
                 (system.equations[index].get_width() - eq.get_width()) / 2 * LEFT
             )
 
@@ -155,4 +155,3 @@ class InsertEquation(AnimationGroup):
 
     def finish(self):
         self.system.equations.insert(self.index, self.eq)
-

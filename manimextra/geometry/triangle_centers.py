@@ -148,13 +148,13 @@ class FermatPoint(Dot):
         angle_a = Angle.from_three_points(B, A, C).get_value()
         angle_b = Angle.from_three_points(A, B, C).get_value()
         angle_c = Angle.from_three_points(B, C, A).get_value()
-        if angle_a > 2/3 * PI:
+        if angle_a > 2 / 3 * PI:
             super().__init__(A)
 
-        elif angle_b > 2/3 * PI:
+        elif angle_b > 2 / 3 * PI:
             super().__init__(B)
 
-        elif angle_c > 2/3 * PI:
+        elif angle_c > 2 / 3 * PI:
             super().__init__(C)
 
         super().__init__(trilinear_to_cartesian(A, B, C, (
