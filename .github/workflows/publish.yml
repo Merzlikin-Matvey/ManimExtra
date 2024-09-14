@@ -52,9 +52,8 @@ jobs:
     - name: Output check_version outcome
       run: echo "check_version.outcome=${{ steps.check_version.outcome }}"
 
-
     - name: Publish to PyPI
-      if: steps.check_prerelease.outcome != 'success' && steps.check_version.outcome != 'failure'
+      if: steps.check_prerelease.outcome == 'success' && steps.check_version.outcome != 'failure'
       env:
         POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_API_TOKEN }}
       run: |
