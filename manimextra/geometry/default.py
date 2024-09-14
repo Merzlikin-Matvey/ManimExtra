@@ -87,7 +87,7 @@ class Angle(manim.Angle):
     @staticmethod
     def from_three_points(A, B, C, auto_dot_to_array=True, **kwargs):
         angle = Angle(Line(B, A), Line(B, C), **kwargs)
-        if angle.get_angle_value() > PI:
+        if angle.get_value() > PI:
             angle = Angle(Line(B, C), Line(B, A), **kwargs)
         return angle
 
