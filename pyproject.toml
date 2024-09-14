@@ -1,9 +1,10 @@
 [tool.poetry]
 name = "manimextra"
-version = "1.11.0"
+version = "1.11.1"
 description = "A library that extends the capabilities of Manim"
 authors = ["Merzlikin-Matvey <merzlikinmatvey01@gmail.com>"]
-readme = "README.md"
+license="MIT"
+readme="README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.12,<3.13"

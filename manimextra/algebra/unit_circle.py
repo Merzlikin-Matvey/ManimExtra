@@ -61,6 +61,30 @@ class UnitCircleLabel(MathTex):
                 super().__init__(str(2 * repeats + 1.5) + r'\pi', **kwargs)
 
 
+class FadeInAndAdd(AnimationGroup):
+    def __init__(self, unit_circle, *objects, **kwargs):
+        self.unit_circle = unit_circle
+        self.unit_circle.normalize_labels()
+
+        animations = []
+        for obj in objects:
+            animations.append(FadeIn(obj))
+
+        super().__init__(*animations, **kwargs)
+
+
+class FadeOutAndRemove(AnimationGroup):
+    def __init__(self, unit_circle, *objects, **kwargs):
+        self.unit_circle = unit_circle
+        self.unit_circle.normalize_labels()
+
+        animations = []
+        for obj in objects:
+            animations.append(FadeOut(obj))
+
+        super().__init__(*animations, **kwargs)
+
+
 class UnitCircle(VGroup):
     def __init__(self, point=0, radius=1.5, color=BLUE, label_buff=0.2, font_size=32, fractions=True):
         self.circle = Circle(radius=radius, color=color)
@@ -134,12 +158,12 @@ class UnitCircle(VGroup):
         anim = FadeIn(VGroup(dot, label), **anim_args)
         return anim
 
-    def _normalize_labels(self):
+    def normalize_labels(self):
         VGroup(self.right, self.up, self.left, self.down, self.right_label, self.up_label, self.left_label,
                self.down_label).move_to(self.circle.get_center())
 
     def show_labels(self):
-        self._normalize_labels()
+        self.normalize_labels()
         self.add(self.right, self.up, self.left, self.down, self.right_label, self.up_label, self.left_label,
                  self.down_label)
         return self
@@ -151,39 +175,18 @@ class UnitCircle(VGroup):
 
     @override_animate(show_labels)
     def _show_labels_animation(self, anim_args=None):
-        self._normalize_labels()
+        self.normalize_labels()
         if anim_args is None:
             anim_args = {}
-        anim = AnimationGroup(
-            FadeIn(self.right, **anim_args),
-            FadeIn(self.up, **anim_args),
-            FadeIn(self.left, **anim_args),
-            FadeIn(self.down, **anim_args),
-            FadeIn(self.right_label, **anim_args),
-            FadeIn(self.up_label, **anim_args),
-            FadeIn(self.left_label, **anim_args),
-            FadeIn(self.down_label, **anim_args)
-        )
-        self.add(self.right, self.up, self.left, self.down, self.right_label, self.up_label, self.left_label,
-                 self.down_label)
-        return anim
+        return FadeInAndAdd(self, self.right, self.up, self.left, self.down,
+                            self.right_label, self.up_label, self.left_label, self.down_label, **anim_args)
 
     @override_animate(hide_labels)
     def _hide_labels_animation(self, anim_args=None):
         if anim_args is None:
             anim_args = {}
-        anim = AnimationGroup(
-            FadeOut(self.right, **anim_args),
-            FadeOut(self.up, **anim_args),
-            FadeOut(self.left, **anim_args),
-            FadeOut(self.down, **anim_args),
-            FadeOut(self.right_label, **anim_args),
-            FadeOut(self.up_label, **anim_args),
-            FadeOut(self.left_label, **anim_args),
-            FadeOut(self.down_label, **anim_args)
-        )
-        self.hide_labels()
-        return anim
+        return FadeOutAndRemove(self, self.right, self.up, self.left, self.down,
+                                self.right_label, self.up_label, self.left_label, self.down_label, **anim_args)
 
     def show_horizontal(self):
         self.add(self.horizontal)
@@ -197,13 +200,13 @@ class UnitCircle(VGroup):
     def _show_horizontal_animation(self, anim_args=None):
         if anim_args is None:
             anim_args = {}
-        return FadeIn(self.horizontal, **anim_args)
+        return FadeInAndAdd(self, self.horizontal, **anim_args)
 
     @override_animate(hide_horizontal)
     def _hide_horizontal_animation(self, anim_args=None):
         if anim_args is None:
             anim_args = {}
-        return FadeOut(self.horizontal, **anim_args)
+        return FadeOutAndRemove(self, self.horizontal, **anim_args)
 
     def show_vertical(self):
         self.add(self.vertical)
@@ -217,13 +220,13 @@ class UnitCircle(VGroup):
     def _show_vertical_animation(self, anim_args=None):
         if anim_args is None:
             anim_args = {}
-        return FadeIn(self.vertical, **anim_args)
+        return FadeInAndAdd(self, self.vertical, **anim_args)
 
     @override_animate(hide_vertical)
     def _hide_vertical_animation(self, anim_args=None):
         if anim_args is None:
             anim_args = {}
-        return FadeOut(self.vertical, **anim_args)
+        return FadeOutAndRemove(self, self.vertical, **anim_args)
 
     def show_axes(self):
         self.add(self.horizontal, self.vertical)
@@ -237,19 +240,13 @@ class UnitCircle(VGroup):
     def _show_axes_animation(self, anim_args=None):
         if anim_args is None:
             anim_args = {}
-        return AnimationGroup(
-            FadeIn(self.horizontal, **anim_args),
-            FadeIn(self.vertical, **anim_args)
-        )
+        return FadeInAndAdd(self, self.horizontal, self.vertical, **anim_args)
 
     @override_animate(hide_axes)
     def _hide_axes_animation(self, anim_args=None):
         if anim_args is None:
             anim_args = {}
-        return AnimationGroup(
-            FadeOut(self.horizontal, **anim_args),
-            FadeOut(self.vertical, **anim_args)
-        )
+        return FadeOutAndRemove(self, self.horizontal, self.vertical, **anim_args)
 
     def get_abscissa_point(self, point):
         alpha = (1 + point) / 2
