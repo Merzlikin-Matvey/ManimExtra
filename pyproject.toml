@@ -9,6 +9,7 @@ readme = "README.md"
 python = ">=3.12,<3.13"
 manim = "^0.18.0"
 setuptools = "^72.1.0"
+flake8 = "^4.0.1"
 
 [build-system]
 requires = ["poetry-core"]
