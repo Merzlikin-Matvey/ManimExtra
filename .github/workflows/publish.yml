@@ -46,6 +46,13 @@ jobs:
           exit 1
         fi
 
+    - name: Output check_prerelease outcome
+      run: echo "check_prerelease.outcome=${{ steps.check_prerelease.outcome }}"
+
+    - name: Output check_version outcome
+      run: echo "check_version.outcome=${{ steps.check_version.outcome }}"
+
+
     - name: Publish to PyPI
       if: steps.check_prerelease.outcome != 'success' && steps.check_version.outcome != 'failure'
       env:
