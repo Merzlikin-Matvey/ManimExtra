@@ -70,8 +70,8 @@ class SwapEquations(AnimationGroup):
         )
 
     def finish(self):
-        self.system.equations[self.i], self.system.equations[self.j] = self.system.equations[self.j], \
-        self.system.equations[self.i]
+        self.system.equations[self.i], self.system.equations[self.j] = (
+            self.system.equations[self.j], self.system.equations[self.i])
 
 
 class InsertEquation(AnimationGroup):
