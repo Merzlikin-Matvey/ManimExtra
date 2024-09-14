@@ -32,26 +32,22 @@ jobs:
       id: check_prerelease
       run: |
         if [[ "${{ env.VERSION }}" == *"alpha"* || "${{ env.VERSION }}" == *"beta"* ]]; then
-          echo "Pre-release version ${{ env.VERSION }} detected. Skipping publish."
-          exit 0
+          echo "IS_PRERELEASE=true" >> $GITHUB_ENV
+        else
+          echo "IS_PRERELEASE=false" >> $GITHUB_ENV
         fi
 
     - name: Check if version exists on PyPI
       id: check_version
       run: |
         if curl -s https://pypi.org/pypi/manimextra/json | jq -e ".releases | has(\"${{ env.VERSION }}\")"; then
-          echo "Version ${{ env.VERSION }} already exists on PyPI. Failing the workflow."
-          exit 1
+          echo "VERSION_EXISTS=true" >> $GITHUB_ENV
+        else
+          echo "VERSION_EXISTS=false" >> $GITHUB_ENV
         fi
 
-    - name: Output check_prerelease outcome
-      run: echo "check_prerelease.outcome=${{ steps.check_prerelease.outcome }}"
-
-    - name: Output check_version outcome
-      run: echo "check_version.outcome=${{ steps.check_version.outcome }}"
-
     - name: Publish to PyPI
-      if: steps.check_prerelease.outcome == 'success' && steps.check_version.outcome != 'failure'
+      if: env.IS_PRERELEASE == 'false' && env.VERSION_EXISTS == 'false'
       env:
         POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_API_TOKEN }}
       run: |
