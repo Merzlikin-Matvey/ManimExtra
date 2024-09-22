@@ -67,8 +67,8 @@ jobs:
       uses: actions/upload-release-asset@v1
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./dist/your-package-name-${{ env.VERSION }}.tar.gz
-        asset_name: your-package-name-${{ env.VERSION }}.tar.gz
+        asset_path: ./dist/manimextra-${{ env.VERSION }}.tar.gz
+        asset_name: manimextra-${{ env.VERSION }}.tar.gz
         asset_content_type: application/gzip
       env:
         GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
