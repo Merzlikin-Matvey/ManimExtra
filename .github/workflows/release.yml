@@ -43,8 +43,14 @@ jobs:
           echo "NEW_VERSION=false" >> $GITHUB_ENV
         fi
 
+    - name: Build package
+      if: env.NEW_VERSION == 'true'
+      run: |
+        poetry build
+
     - name: Create new release
       if: env.NEW_VERSION == 'true'
+      id: create_release
       uses: actions/create-release@v1
       with:
         tag_name: ${{ env.VERSION }}
@@ -53,5 +59,16 @@ jobs:
           New release ${{ env.VERSION }}
         draft: false
         prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+
+    - name: Upload release asset
+      if: env.NEW_VERSION == 'true'
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./dist/your-package-name-${{ env.VERSION }}.tar.gz
+        asset_name: your-package-name-${{ env.VERSION }}.tar.gz
+        asset_content_type: application/gzip
       env:
         GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
