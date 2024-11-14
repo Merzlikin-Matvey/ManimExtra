@@ -2,13 +2,25 @@ from __future__ import annotations
 
 import manim
 from manim.constants import *
+from manim.utils.deprecation import deprecated
 
 __all__ = [
     "Fancy_label"
 ]
 
 
+
+
+@deprecated(since="v1.11.4", message="Please, dont use this cringe.")
 def Fancy_label(text: manim.Tex, mode='normal', buff=manim.MED_LARGE_BUFF):
+    """
+    A function that writes text at the very top and adapts to its length
+
+    :param text:
+    :param mode:
+    :param buff:
+    :return:
+    """
     mode = mode.lower()
     modes = ['vlow', 'low', 'normal', 'fast', 'vfast']
 

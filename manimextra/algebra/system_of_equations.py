@@ -9,6 +9,20 @@ __all__ = [
 
 
 class SystemOfEquations(VGroup):
+    """
+    A group of equations with a brace on the left side.
+
+    Parameters
+    ----------
+    *equations : :class:`manim.mobject.Mobject`
+        The equations.
+    is_bracket : bool, optional
+        Whether to use bracket instead of brace. Default to False.
+    buff_between_equations : float, optional
+        The buffer between equations. Default to 0.2.
+    buff_between_brace_and_equations : float, optional
+        The buffer between brace and equations. Default to 0.05.
+    """
     def __init__(
             self,
             *equations,
@@ -41,6 +55,12 @@ class SystemOfEquations(VGroup):
         super().__init__(self.equations, self.brace)
 
     def swap(self, i, j):
+        """
+        Swap the i-th and j-th equations.
+        :param i:
+        :param j:
+        :return:
+        """
         self.equations[i], self.equations[j] = self.equations[j], self.equations[i]
 
         self.equations.arrange(DOWN, buff=self.buff_between_equations)

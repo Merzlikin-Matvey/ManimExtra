@@ -19,6 +19,18 @@ __all__ = [
 
 
 class Tangent(Line):
+    """
+    A class to represent a tangent to a circle.
+
+    Parameters
+    ----------
+    circle : Circle
+        The circle to which the tangent is drawn.
+    dot : Dot
+        The point from which the tangent is drawn. It can be on the circle or outside the circle.
+    is_other_tangent : bool, optional
+        If True, the tangent is drawn from the other intersection point of the circle and the line, by default False.
+    """
     def __init__(self, circle: Circle, dot: Dot, is_other_tangent=False, **kwargs):
         dot = dot_to_array(dot)[0]
         if circle.pow(dot) < 0:
@@ -39,6 +51,18 @@ class Tangent(Line):
 
 
 class Incircle(Circle):
+    """
+    A class to represent the incircle of a triangle.
+
+    Parameters
+    ----------
+    A : np.ndarray
+        The first vertex of the triangle.
+    B : np.ndarray
+        The second vertex of the triangle.
+    C : np.ndarray
+        The third vertex of the triangle.
+    """
     def __init__(self, A, B, C, *args, **kwargs):
         A, B, C = dot_to_array(A, B, C)
         I = Incenter(A, B, C).get_center()
@@ -51,6 +75,18 @@ class Incircle(Circle):
 
 
 class Circumcircle(Circle):
+    """
+    A class to represent the circumcircle of a triangle.
+
+    Parameters
+    ----------
+    A : np.ndarray
+        The first vertex of the triangle.
+    B : np.ndarray
+        The second vertex of the triangle.
+    C : np.ndarray
+        The third vertex of the triangle.
+    """
     def __init__(self, A, B, C, *args, **kwargs):
         A, B, C = dot_to_array(A, B, C)
         O = Circumcenter(A, B, C).get_center()
@@ -59,6 +95,18 @@ class Circumcircle(Circle):
 
 
 class NinePointCircle(Circle):
+    """
+    A class to represent the nine-point circle of a triangle.
+
+    Parameters
+    ----------
+    A : np.ndarray
+        The first vertex of the triangle.
+    B : np.ndarray
+        The second vertex of the triangle.
+    C : np.ndarray
+        The third vertex of the triangle.
+    """
     def __init__(self, A, B, C, *args, **kwargs):
         A, B, C = dot_to_array(A, B, C)
         r = distance(Circumcenter(A, B, C).get_center(), A) / 2
@@ -68,6 +116,18 @@ class NinePointCircle(Circle):
 
 
 class CarnotCircle(Circle):
+    """
+    A class to represent the Carnot circle of a triangle relative to side AC.
+
+    Parameters
+    ----------
+    A : np.ndarray
+        The first vertex of the triangle.
+    B : np.ndarray
+        The second vertex of the triangle.
+    C : np.ndarray
+        The third vertex of the triangle.
+    """
     def __init__(self, A, B, C, *args, **kwargs):
         A, B, C = dot_to_array(A, B, C)
         circle = Circumcircle(A, B, C)

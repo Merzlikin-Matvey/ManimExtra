@@ -17,6 +17,18 @@ __all__ = [
 
 
 class Bracket(VMobjectFromSVGPath):
+    """
+    Bracket is a class that creates a bracket that fits the height of a mobject.
+
+    Parameters
+    ----------
+    mobject : Mobject
+        The mobject that the bracket will fit the height of.
+    direction : Sequence[float], optional
+        The direction of the bracket, by default DOWN
+    buff : float, optional
+        The distance between the bracket and the mobject, by default 0.2
+    """
     def __init__(
             self,
             mobject: Mobject,
@@ -45,10 +57,22 @@ class Bracket(VMobjectFromSVGPath):
 
 
 class BracketBetweenPoints(Bracket):
+    """
+    BracketBetweenPoints is a class that creates a bracket between two points.
+
+    Parameters
+    ----------
+    point_1 : Sequence[float], optional
+        The first point, by default ORIGIN
+    point_2 : Sequence[float], optional
+        The second point, by default ORIGIN
+    direction : Sequence[float], optional
+        The direction of the bracket, by default ORIGIN
+    """
     def __init__(
         self,
-        point_1: Sequence[float] | None,
-        point_2: Sequence[float] | None,
+        point_1: Sequence[float] = LEFT,
+        point_2: Sequence[float] = RIGHT,
         direction: Sequence[float] | None = ORIGIN,
         **kwargs,
     ):

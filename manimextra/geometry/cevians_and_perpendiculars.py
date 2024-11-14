@@ -19,6 +19,20 @@ __all__ = [
 
 
 class Cevian(Line):
+    """
+    A class to represent a cevian in a triangle.
+
+    Parameters
+    ----------
+    A : np.ndarray
+        The first vertex of the triangle.
+    B : np.ndarray
+        The second vertex of the triangle. Cevian passes through this point.
+    C : np.ndarray
+        The third vertex of the triangle.
+    alpha : float, optional
+        The proportion of the cevian, by default 0.35. Let D be the foot of the cevian, then the proportion is the AD:AC ratio.
+    """
     def __init__(self, A, B, C, alpha=0.35, **kwargs):
         A, B, C = dot_to_array(A, B, C)
         D = Line(A, C).point_from_proportion(alpha)
@@ -42,6 +56,18 @@ class Cevian(Line):
 
 
 class Bisector(Cevian):
+    """
+    A class to represent a bisector in a triangle.
+
+    Parameters
+    ----------
+    A : np.ndarray
+        The first vertex of the triangle.
+    B : np.ndarray
+        The second vertex of the triangle.
+    C : np.ndarray
+        The third vertex of the triangle.
+    """
     def __init__(self, A, B, C, **kwargs):
         A, B, C = dot_to_array(A, B, C)
         alpha = ((Line(A, C).get_length() * Line(A, B).get_length()) /
@@ -56,6 +82,18 @@ class Bisector(Cevian):
 
 
 class Median(Cevian):
+    """
+    A class to represent a median in a triangle.
+
+    Parameters
+    ----------
+    A : np.ndarray
+        The first vertex of the triangle.
+    B : np.ndarray
+        The second vertex of the triangle.
+    C : np.ndarray
+        The third vertex of the triangle.
+    """
     def __init__(self, A, B, C, **kwargs):
         A, B, C = dot_to_array(A, B, C)
         super().__init__(A, B, C, 0.5, **kwargs)
@@ -68,6 +106,18 @@ class Median(Cevian):
 
 
 class Symmedian(Cevian):
+    """
+    A class to represent a symmedian in a triangle.
+
+    Parameters
+    ----------
+    A : np.ndarray
+        The first vertex of the triangle.
+    B : np.ndarray
+        The second vertex of the triangle.
+    C : np.ndarray
+        The third vertex of the triangle
+    """
     def __init__(self, A, B, C, **kwargs):
         A, B, C = dot_to_array(A, B, C)
         a, b, c = Line(B, C).get_length(), Line(A, C).get_length(), Line(A, B).get_length()
@@ -76,6 +126,20 @@ class Symmedian(Cevian):
 
 
 class Perpendicular(Line):
+    """
+    A class to represent a perpendicular line to another line.
+
+    Parameters
+    ----------
+    line : Line
+        The line to which the perpendicular line is drawn.
+    dot : np.ndarray
+        The point through which the perpendicular line passes.
+    length : float, optional
+        The length of the perpendicular line, by default 1.0.
+    rotate : bool, optional
+        Use if you want the perpendicular to be in the other direction, by default False.
+    """
     def __init__(self, line: Line, dot, length=1.0, rotate=False, **kwargs):
         X = dot_to_array(dot)[0]
         A, B = line.get_start(), line.get_end()
@@ -108,6 +172,16 @@ class Perpendicular(Line):
 
 
 class PerpendicularBisector(Line):
+    """
+    A class to represent a perpendicular bisector to a line.
+
+    Parameters
+    ----------
+    line : Line
+        The line to which the perpendicular bisector is drawn.
+    length : float, optional
+        The length of the perpendicular bisector, by default 1.0.
+    """
     def __init__(self, line: Line, length=1, **kwargs):
         line_1 = Perpendicular(line=line, dot=line.get_center(), length=length / 2, rotate=False)
         line_2 = Perpendicular(line=line, dot=line.get_center(), length=length / 2, rotate=True)
@@ -118,6 +192,12 @@ class PerpendicularBisector(Line):
         super().__init__(line_1.get_end(), line_2.get_end(), **kwargs)
 
     def get_angles(self, **kwargs):
+        """
+        Get all the angles formed by the perpendicular bisector.
+
+        :param kwargs:
+        :return:
+        """
         return VGroup(
             Angle.from_three_points(self.line.get_start(), self.dot, self.get_start(), **kwargs),
             Angle.from_three_points(self.line.get_start(), self.dot, self.get_end(), **kwargs),
@@ -127,7 +207,18 @@ class PerpendicularBisector(Line):
 
 
 class Altitude(Perpendicular):
+    """
+    A class to represent an altitude in a triangle. Important: it is not a cevian.
 
+    Parameters
+    ----------
+    A : np.ndarray
+        The first vertex of the triangle.
+    B : np.ndarray
+        The second vertex of the triangle.
+    C : np.ndarray
+        The third vertex of the triangle.
+    """
     def __init__(self, A, B, C, **kwargs):
         A, B, C = dot_to_array(A, B, C)
         line = Line(A, C)
@@ -135,6 +226,18 @@ class Altitude(Perpendicular):
 
 
 class EuclidLine(Line):
+    """
+    A class to represent a EuclidLine for a triangle.This line is parallel to AC and we pass through B
+
+    Parameters
+    ----------
+    A : np.ndarray
+        The first vertex of the triangle.
+    B : np.ndarray
+        The second vertex of the triangle.
+    C : np.ndarray
+        The third vertex of the triangle.
+    """
     def __init__(self, A, B, C, **kwargs):
         A, B, C = dot_to_array(A, B, C)
         line = Line(A, C).move_to(B)

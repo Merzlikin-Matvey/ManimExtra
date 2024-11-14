@@ -17,6 +17,17 @@ __all__ = [
 
 
 class TransformSystem(AnimationGroup):
+    """
+    Transform a system of equations to another system of equations.
+
+    Parameters
+    ----------
+    system_1 : :class:`SystemOfEquations`
+        The first system of equations.
+    system_2 : :class:`SystemOfEquations`
+        The second system of equations.
+
+    """
     def __init__(self, system_1, system_2, **kwargs):
         self.system_1 = system_1
         self.system_2 = system_2
@@ -53,6 +64,18 @@ class TransformSystem(AnimationGroup):
 
 
 class SwapEquations(AnimationGroup):
+    """
+    Swap two equations in a system of equations.
+
+    Parameters
+    ----------
+    system : :class:`SystemOfEquations`
+        The system of equations.
+    i : int
+        The index of the first equation.
+    j : int
+        The index of the second equation.
+    """
     def __init__(self, system, i, j, **kwargs):
         self.system = system
         self.i, self.j = min(i, j), max(i, j)
@@ -75,6 +98,19 @@ class SwapEquations(AnimationGroup):
 
 
 class InsertEquation(AnimationGroup):
+    """
+    Insert an equation to the system of equations.
+
+    Parameters
+    ----------
+    system : :class:`SystemOfEquations`
+        The system of equations.
+    eq : :class:`manim.mobject.Mobject`
+        The equation to insert.
+    index : int
+        The index to insert.
+    direction : np.ndarray, optional
+    """
     def __init__(self,
                  system: SystemOfEquations,
                  eq,

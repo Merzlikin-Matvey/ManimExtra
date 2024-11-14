@@ -21,6 +21,18 @@ __all__ = [
 
 
 class UnitCircleLabel(MathTex):
+    """
+    A label for the unit circle.
+
+    Parameters
+    ----------
+    direction : np.ndarray
+        The direction of the label.
+    repeats : int
+        The number of repeats of the unit circle.
+    fraction : bool
+        Whether to use fraction. Default to True.
+    """
     def __init__(self, direction=RIGHT, repeats=0, fraction=True, **kwargs):
         if (direction == RIGHT).all():
             self.other = False
@@ -86,6 +98,24 @@ class FadeOutAndRemove(AnimationGroup):
 
 
 class UnitCircle(VGroup):
+    """
+    A unit circle.
+
+    Parameters
+    ----------
+    point : float
+        The point on the unit circle. Using this point we determine how many cycles have passed.
+    radius : float, optional
+        The radius of the circle. Default to 1.5.
+    color : :class:`manim.utils.color.Color`, optional
+        The color of the circle. Default to BLUE.
+    label_buff : float, optional
+        The buffer between the circle and the labels. Default to 0.2.
+    font_size : int, optional
+        The font size of the labels. Default to 32.
+    fractions : bool, optional
+        Whether to use fraction in the labels. Default to True.
+    """
     def __init__(self, point=0, radius=1.5, color=BLUE, label_buff=0.2, font_size=32, fractions=True):
         self.circle = Circle(radius=radius, color=color)
         self.circle.set_z_index(-5)

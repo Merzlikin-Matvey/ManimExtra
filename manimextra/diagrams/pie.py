@@ -18,6 +18,18 @@ PIE_CHART_COLORS = [
 
 
 class PieChartSector(AnnularSector):
+    """
+    A sector of a pie chart.
+
+    Parameters
+    ----------
+    value : float
+        The value of the sector.
+    percent : float
+        The percentage of the sector.
+    label : str
+        The label of the sector.
+    """
     def __init__(self, value, percent, label, *args, **kwargs):
         self.value = value
         self.percent = percent
@@ -27,6 +39,25 @@ class PieChartSector(AnnularSector):
 
 
 class PieChart(VGroup):
+    """
+    A pie chart.
+
+    Parameters
+    ----------
+    data : Union[dict, tuple]
+        The data of the pie chart. If it is a dictionary, the keys are the labels and the values are the values.
+        If it is a tuple, the first element is the labels and the second element is the values.
+    labels : Optional[List[str]]
+        The labels of the pie chart.
+    label_buff : float, optional
+        The buffer between the label and the sector. Default to 0.85.
+    colors : List[Union[str, Tuple[float, float, float]]], optional
+        The colors of the sectors. Default to PIE_CHART_COLORS.
+    inner_radius : float, optional
+        The inner radius of the sectors. Default to 1.
+    outer_radius : float, optional
+        The outer radius of the sectors. Default to 2.
+    """
     def __init__(self,
                  data,
                  labels=None,
@@ -87,6 +118,13 @@ class PieChart(VGroup):
         return self.sectors
 
     def get_sector(self, value=None, label=None):
+        """
+        Get a sector by value or label.
+
+        :param value:
+        :param label:
+        :return:
+        """
         for sector in self.sectors:
             if value:
                 if sector.value == value:

@@ -11,6 +11,13 @@ __all__ = [
 
 
 def intersection_lines(line_1: Line, line_2: Line) -> np.ndarray:
+    """
+    Find the intersection point of two lines.
+
+    :param line_1:
+    :param line_2:
+    :return:
+    """
     x1, y1 = line_1.get_start()[0], line_1.get_start()[1],
     x2, y2 = line_1.get_end()[0], line_1.get_end()[1],
     x3, y3 = line_2.get_start()[0], line_2.get_start()[1],
@@ -26,6 +33,13 @@ def intersection_lines(line_1: Line, line_2: Line) -> np.ndarray:
 
 
 def intersection_circles(circle_1: Circle, circle_2: Circle) -> tuple[np.ndarray, np.ndarray]:
+    """
+    Find the intersection points of two circles.
+
+    :param circle_1:
+    :param circle_2:
+    :return:
+    """
     o1 = circle_1.get_center()
     o2 = circle_2.get_center()
     r1 = circle_1.radius
@@ -46,6 +60,13 @@ def intersection_circles(circle_1: Circle, circle_2: Circle) -> tuple[np.ndarray
 
 
 def intersection_line_and_circle(line: Line, circle: Circle) -> tuple[np.ndarray, np.ndarray]:
+    """
+    Find the intersection points of a line and a circle.
+
+    :param line:
+    :param circle:
+    :return:
+    """
     o, r = circle.get_center(), circle.radius
     h = Line(line.get_projection(o), o).get_length()
     alpha = np.arccos(round(h / r, 4))
