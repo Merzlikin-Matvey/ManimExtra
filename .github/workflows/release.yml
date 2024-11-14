@@ -28,6 +28,15 @@ jobs:
       run: |
         echo "VERSION=$(poetry version -s)" >> $GITHUB_ENV
 
+    - name: Check if version is pre-release
+      id: check_prerelease
+      run: |
+        if [[ "${{ env.VERSION }}" == *"alpha"* || "${{ env.VERSION }}" == *"beta"* ]]; then
+          echo "IS_PRERELEASE=true" >> $GITHUB_ENV
+        else
+          echo "IS_PRERELEASE=false" >> $GITHUB_ENV
+        fi
+
     - name: Get latest release version
       id: get_latest_release
       run: |
@@ -44,12 +53,12 @@ jobs:
         fi
 
     - name: Build package
-      if: env.NEW_VERSION == 'true'
+      if: env.NEW_VERSION == 'true' && env.IS_PRERELEASE == 'false'
       run: |
         poetry build
 
     - name: Create new release
-      if: env.NEW_VERSION == 'true'
+      if: env.NEW_VERSION == 'true' && env.IS_PRERELEASE == 'false'
       id: create_release
       uses: actions/create-release@v1
       with:
@@ -63,7 +72,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
 
     - name: Upload release asset
-      if: env.NEW_VERSION == 'true'
+      if: env.NEW_VERSION == 'true' && env.IS_PRERELEASE == 'false'
       uses: actions/upload-release-asset@v1
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}

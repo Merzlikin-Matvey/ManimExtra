@@ -9,8 +9,6 @@ __all__ = [
 ]
 
 
-
-
 @deprecated(since="v1.11.4", message="Please, dont use this cringe.")
 def Fancy_label(text: manim.Tex, mode='normal', buff=manim.MED_LARGE_BUFF):
     """
