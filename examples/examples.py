@@ -6,13 +6,13 @@ class SystemOfEquationsScene(Scene):
     def construct(self):
         first = SystemOfEquations(
             MathTex('3x', '+', '1', '=', '0'),
-            MathTex('\sin', '{x}', '=', '0.5'),
+            MathTex(r'\sin', '{x}', '=', '0.5'),
             is_bracket=True
         )
 
         second = SystemOfEquations(
             MathTex('3x', '=', '-', '1'),
-            MathTex('\sin', '{x}', '=', '0.5'),
+            MathTex(r'\sin', '{x}', '=', '0.5'),
             is_bracket=True
         )
 
@@ -61,7 +61,6 @@ class Triangle(Scene):
 
 if __name__ == "__main__":
     config.media_dir = "media/examples"
-
 
     SystemOfEquationsScene().render()
     Trigonometry().render()
