@@ -1,4 +1,4 @@
-ManimExtrahg
+ManimExtra
 ============
 
 .. toctree::

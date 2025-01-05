@@ -1,29 +1,13 @@
-manimextra.animations package
-=============================
+Animations
+==========
 
-Submodules
-----------
+.. currentmodule:: manimextra
 
-manimextra.animations.fancy\_label module
------------------------------------------
+.. autosummary::
+   :toctree: ../generated
+   :template: autosummary/class.rst
 
-.. automodule:: manimextra.animations.fancy_label
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-manimextra.animations.transform\_system module
-----------------------------------------------
-
-.. automodule:: manimextra.animations.transform_system
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: manimextra.animations
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   ~animations.Fancy_label
+   ~animations.TransformSystem
+   ~animations.SwapEquations
+   ~animations.InsertEquation

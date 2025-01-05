@@ -1,21 +1,11 @@
-manimextra.diagrams package
-===========================
+Diagrams
+========
 
-Submodules
-----------
+.. currentmodule:: manimextra
 
-manimextra.diagrams.pie module
-------------------------------
+.. autosummary::
+   :toctree: ../generated
+   :template: autosummary/class.rst
 
-.. automodule:: manimextra.diagrams.pie
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: manimextra.diagrams
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   ~diagrams.PieChart
+   ~diagrams.PieChartSector

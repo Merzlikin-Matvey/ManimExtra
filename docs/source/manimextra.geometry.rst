@@ -1,53 +1,35 @@
-manimextra.geometry package
-===========================
+Geometry
+========
 
-Submodules
-----------
+.. currentmodule:: manimextra
 
-manimextra.geometry.cevians\_and\_perpendiculars module
--------------------------------------------------------
+.. autosummary::
+   :toctree: ../generated
+   :template: autosummary/class.rst
 
-.. automodule:: manimextra.geometry.cevians_and_perpendiculars
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-manimextra.geometry.circles module
-----------------------------------
-
-.. automodule:: manimextra.geometry.circles
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-manimextra.geometry.default module
-----------------------------------
-
-.. automodule:: manimextra.geometry.default
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-manimextra.geometry.intersection module
----------------------------------------
-
-.. automodule:: manimextra.geometry.intersection
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-manimextra.geometry.triangle\_centers module
---------------------------------------------
-
-.. automodule:: manimextra.geometry.triangle_centers
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: manimextra.geometry
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   ~geometry.Cevian
+   ~geometry.Bisector
+   ~geometry.Median
+   ~geometry.Perpendicular
+   ~geometry.Altitude
+   ~geometry.PerpendicularBisector
+   ~geometry.Symmedian
+   ~geometry.EuclidLine
+   ~geometry.Tangent
+   ~geometry.Incircle
+   ~geometry.Circumcircle
+   ~geometry.NinePointCircle
+   ~geometry.CarnotCircle
+   ~geometry.Incenter
+   ~geometry.Excenter
+   ~geometry.Centroid
+   ~geometry.Circumcenter
+   ~geometry.Orthocenter
+   ~geometry.NinePointCenter
+   ~geometry.LemoinePoint
+   ~geometry.GergonnePoint
+   ~geometry.NagelPoint
+   ~geometry.Mittenpunkt
+   ~geometry.SpiekerCenter
+   ~geometry.FeuerbachPoint
+   ~geometry.FermatPoint
