@@ -1,4 +1,4 @@
-manimextra package
+ManimExtra
 ==================
 
 Subpackages

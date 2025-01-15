@@ -22,6 +22,39 @@ intersphinx_mapping = {
     "pillow": ("https://pillow.readthedocs.io/en/stable/", None),
 }
 
+html_theme_options = {
+    "source_repository": "https://github.com/ManimCommunity/manim/",
+    "source_branch": "main",
+    "source_directory": "docs/source/",
+    "top_of_page_button": None,
+    "light_logo": "manim-logo-sidebar.svg",
+    "dark_logo": "manim-logo-sidebar-dark.svg",
+    "light_css_variables": {
+        "color-content-foreground": "#000000",
+        "color-background-primary": "#ffffff",
+        "color-background-border": "#ffffff",
+        "color-sidebar-background": "#f8f9fb",
+        "color-brand-content": "#1c00e3",
+        "color-brand-primary": "#192bd0",
+        "color-link": "#c93434",
+        "color-link--hover": "#5b0000",
+        "color-inline-code-background": "#f6f6f6;",
+        "color-foreground-secondary": "#000",
+    },
+    "dark_css_variables": {
+        "color-content-foreground": "#ffffffd9",
+        "color-background-primary": "#131416",
+        "color-background-border": "#303335",
+        "color-sidebar-background": "#1a1c1e",
+        "color-brand-content": "#2196f3",
+        "color-brand-primary": "#007fff",
+        "color-link": "#51ba86",
+        "color-link--hover": "#9cefc6",
+        "color-inline-code-background": "#262626",
+        "color-foreground-secondary": "#ffffffd9",
+    },
+}
+
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
