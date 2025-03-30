@@ -11,4 +11,4 @@ documentation for details.
 
     examples
     installation
-    source/modules
+    source/manimextra

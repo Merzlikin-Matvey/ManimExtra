@@ -22,6 +22,7 @@ or on Linux/MacOS:
 
 Installing via pip (GitHub releases)
 ============
+
 You can also use pip to install the library bypassing pypi,
 to do this, download the desired release from GitHub
 (located on the right side of the repository page)
