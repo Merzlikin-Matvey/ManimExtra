@@ -14,6 +14,9 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx_design",
     "sphinx.ext.autosummary",
+    "manim.utils.docbuild.manim_directive",
+    "manim.utils.docbuild.autocolor_directive",
+    "manim.utils.docbuild.autoaliasattr_directive",
 ]
 
 intersphinx_mapping = {
@@ -29,4 +32,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 html_theme = "furo"
 html_static_path = ['_static']
 
+
+
 autosummary_generate = True
+

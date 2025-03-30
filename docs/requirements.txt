@@ -1,0 +1,9 @@
+manim
+furo
+myst-parser
+sphinx>=7.3
+sphinx-copybutton
+sphinxext-opengraph
+sphinx-design
+sphinx-reredirects
+sphinx-autodoc-typehints

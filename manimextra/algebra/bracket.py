@@ -17,17 +17,19 @@ __all__ = [
 
 
 class Bracket(VMobjectFromSVGPath):
-    """
-    Bracket is a class that creates a bracket that fits the height of a mobject.
+    """Analogue of manim's Brace, but for a rectangle.
 
-    Parameters
-    ----------
-    mobject : Mobject
-        The mobject that the bracket will fit the height of.
-    direction : Sequence[float], optional
-        The direction of the bracket, by default DOWN
-    buff : float, optional
-        The distance between the bracket and the mobject, by default 0.2
+    Examples
+    --------
+    A simple arc of angle Pi.
+
+    .. manim:: ArcExample
+        :save_last_frame:
+
+        class ArcExample(Scene):
+            def construct(self):
+                A = Dot(Left)
+                B 
     """
     def __init__(
             self,
@@ -57,8 +59,7 @@ class Bracket(VMobjectFromSVGPath):
 
 
 class BracketBetweenPoints(Bracket):
-    """
-    BracketBetweenPoints is a class that creates a bracket between two points.
+    """Class that creates a bracket between two points.
 
     Parameters
     ----------

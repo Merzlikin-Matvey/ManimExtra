@@ -1,7 +1,10 @@
-ManimExtra
+Manual
 ============
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
 
-   manimextra
+   manimextra.algebra
+   manimextra.animations
+   manimextra.diagrams
+   manimextra.geometry
