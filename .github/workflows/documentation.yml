@@ -38,6 +38,7 @@ jobs:
           cd docs
           poetry install
           poetry build
+          pip install dist/*.whl
           cd ..
 
       - name: Build documentation

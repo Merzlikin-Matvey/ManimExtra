@@ -1,5 +1,4 @@
 manim
-manimextra
 furo
 myst-parser
 sphinx>=7.3
