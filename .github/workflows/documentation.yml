@@ -55,7 +55,7 @@ jobs:
 
       - name: Build documentation
         run: |
-           make html
+          make html
           cd ..
 
       - name: Set documentation path
