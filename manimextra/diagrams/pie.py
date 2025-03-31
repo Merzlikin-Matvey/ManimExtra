@@ -57,6 +57,21 @@ class PieChart(VGroup):
         The inner radius of the sectors. Default to 1.
     outer_radius : float, optional
         The outer radius of the sectors. Default to 2.
+
+    Examples
+    --------
+    .. manimextra:: PieChartExample
+        :save_last_frame:
+
+        class PieChartExample(Scene):
+            def construct(self):
+                pie_chart = PieChart(
+                    data={"First": 10, "Second": 20, "Third": 30},
+                    label_buff=0.7,
+                    inner_radius=1,
+                    outer_radius=2
+                )
+                self.add(pie_chart)
     """
     def __init__(self,
                  data,

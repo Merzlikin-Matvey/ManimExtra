@@ -81,7 +81,7 @@ class Angle(manim.Angle):
         else:
             self.radius = radius
         kwargs["radius"] = self.radius
-        super().__init__(*args, **kwargs)
+        super().__init__(*args, z_index=-1, **kwargs)
 
     @staticmethod
     def from_three_points(A: Point3DLike, B: Point3DLike, C: Point3DLike, **kwargs):
@@ -160,4 +160,4 @@ class Circle(manim.Circle):
 
 class Dot(manim.Dot):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super().__init__(*args, z_index=1, **kwargs)

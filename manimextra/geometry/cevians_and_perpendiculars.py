@@ -67,6 +67,27 @@ class Bisector(Cevian):
         The second vertex of the triangle.
     C : np.ndarray
         The third vertex of the triangle.
+
+    Examples:
+    ---------
+    .. manimextra:: BisectorExample
+        :save_last_frame:
+
+        class BisectorExample(Scene):
+            def construct(self):
+                A = Dot(DOWN + LEFT).set_z_index(1)
+                B = Dot(0.3 * LEFT + 1.5 * UP).set_z_index(1)
+                C = Dot(DOWN + 2 * RIGHT)
+
+                a = Line(B, C, color=BLUE)
+                b = Line(A, C, color=BLUE)
+                c = Line(A, B, color=BLUE)
+
+                bisector = Bisector(A, B, C, color=YELLOW)
+                angles = bisector.get_bisected_angles()
+                self.add(A, B, C, a, b, c, bisector, angles)
+
+
     """
     def __init__(self, A, B, C, **kwargs):
         A, B, C = dot_to_array(A, B, C)
