@@ -81,9 +81,6 @@ def parse_module_attributes() -> tuple[AliasDocsDict, DataDict, TypeVarDict]:
         A dictionary containing the definitions of :class:`TypeVar` objects,
         organized by modules.
     """
-    global ALIAS_DOCS_DICT
-    global DATA_DICT
-    global TYPEVAR_DICT
 
     if ALIAS_DOCS_DICT or DATA_DICT or TYPEVAR_DICT:
         return ALIAS_DOCS_DICT, DATA_DICT, TYPEVAR_DICT

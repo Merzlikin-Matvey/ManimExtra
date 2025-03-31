@@ -8,7 +8,7 @@ docstring-convention=numpy
 select = A,A00,B,B9,C4,C90,D,E,F,F,PT,RST,SIM,W,F401
 
                 # General Compatibility
-extend-ignore = E203, W504, W503, D202, D212, D213, D404,
+extend-ignore = E203, W504, W503, D202, D212, D213, D404, W605,
 
                 # Misc
                 F401, F403, F405, F841, E501, E731, E402, F811, F821, E741,

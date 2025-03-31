@@ -188,9 +188,10 @@ class UnitCircle(VGroup):
             print(Line(self.get_center(), dot.get_center()).get_unit_vector())
             label = MathTex(label,
                             font_size=self.font_size
-                    ).next_to(dot,
-                              np.round(Line(self.get_center(), dot.get_center()).get_unit_vector(), 1),
-                              buff=self.label_buff)
+                            ).next_to(dot,
+                                      np.round(Line(self.get_center(), dot.get_center()).get_unit_vector(), 1),
+                                      buff=self.label_buff
+                                      )
         self.dots.add(dot)
         self.labels.add(label)
         return VGroup(dot, label)

@@ -94,7 +94,7 @@ class Angle(manim.Angle):
                 angle = Angle(Line(B, C), Line(B, A), **kwargs)
         return angle
 
-    def get_label_center(self, delta: float =0.25):
+    def get_label_center(self, delta: float = 0.25):
         A = self.lines[0].get_end()
         B = self.lines[0].get_start()
         C = self.lines[1].get_end()

@@ -211,8 +211,6 @@ class ManimExtraDirective(Directive):
 
         from manim import config, tempconfig
 
-        global classnamedict
-
         clsname = self.arguments[0]
         if clsname not in classnamedict:
             classnamedict[clsname] = 1
