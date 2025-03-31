@@ -23,13 +23,14 @@ class Bracket(VMobjectFromSVGPath):
     --------
     A simple arc of angle Pi.
 
-    .. manim:: ArcExample
+    .. manimextra:: BracketExample
         :save_last_frame:
 
-        class ArcExample(Scene):
+        class BracketExample(Scene):
             def construct(self):
-                A = Dot(Left)
-                B 
+                sq = Square(color=RED, fill_opacity=0.5)
+                bracket = Bracket(sq, buff=0.1)
+                self.add(sq, bracket)
     """
     def __init__(
             self,

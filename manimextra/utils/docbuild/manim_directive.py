@@ -2,13 +2,13 @@ r"""
 A directive for including Manim videos in a Sphinx document
 ===========================================================
 
-When rendering the HTML documentation, the ``.. manim::`` directive
+When rendering the HTML documentation, the ``.. manimextra::`` directive
 implemented here allows to include rendered videos.
 
 Its basic usage that allows processing **inline content**
 looks as follows::
 
-    .. manim:: MyScene
+    .. manimextra:: MyScene
 
         class MyScene(Scene):
             def construct(self):
@@ -20,7 +20,7 @@ scene to be rendered to the directive.
 As a second application, the directive can also be used to
 render scenes that are defined within doctests, for example::
 
-    .. manim:: DirectiveDoctestExample
+    .. manimextra:: DirectiveDoctestExample
         :ref_classes: Dot
 
         >>> from manim import Create, Dot, RED, Scene
@@ -37,7 +37,7 @@ Options
 
 Options can be passed as follows::
 
-    .. manim:: <Class name>
+    .. manimextra:: <Class name>
         :<option name>: <value>
 
 The following configuration options are supported by the
@@ -102,7 +102,7 @@ if TYPE_CHECKING:
     from sphinx.application import Sphinx
 
 
-__all__ = ["ManimDirective"]
+__all__ = ["ManimExtraDirective"]
 
 
 classnamedict: dict[str, int] = {}
@@ -152,7 +152,7 @@ def process_name_list(option_input: str, reference_type: str) -> list[str]:
     return [f":{reference_type}:`~.{name}`" for name in option_input.split()]
 
 
-class ManimDirective(Directive):
+class ManimExtraDirective(Directive):
     r"""The manim directive, rendering videos while building
     the documentation.
 
@@ -179,8 +179,6 @@ class ManimDirective(Directive):
     final_argument_whitespace = True
 
     def run(self) -> list[nodes.Element]:
-        # Rendering is skipped if the tag skip-manim is present,
-        # or if we are making the pot-files
         should_skip = (
             "skip-manim" in self.state.document.settings.env.app.builder.tags
             or self.state.document.settings.env.app.builder.name == "gettext"
@@ -256,15 +254,9 @@ class ManimDirective(Directive):
         source_block_in = [
             ".. code-block:: python",
             "",
-            "    from manim import *\n",
-            *("    " + line for line in self.content),
-            "",
-            ".. raw:: html",
-            "",
-            f'    <pre data-manim-binder data-manim-classname="{clsname}">',
-            *("    " + line for line in self.content),
-            "",
-            "    </pre>",
+            "    from manim import *",
+            "    from manimextra import *\n",
+            *("    " + line for line in self.content)
         ]
         source_block = "\n".join(source_block_in)
 
@@ -298,9 +290,13 @@ class ManimDirective(Directive):
 
         code = [
             "from manim import *",
+            "from manimextra import *",
             *user_code,
             f"{clsname}().render()",
         ]
+
+        print("КОД ТУТ")
+        print(code)
 
         try:
             with tempconfig(example_config):
@@ -405,7 +401,7 @@ def setup(app: Sphinx) -> SetupMetadata:
     setup.config = app.config  # type: ignore[attr-defined]
     setup.confdir = app.confdir  # type: ignore[attr-defined]
 
-    app.add_directive("manim", ManimDirective)
+    app.add_directive("manimextra", ManimExtraDirective)
 
     app.connect("builder-inited", _delete_rendering_times)
     app.connect("build-finished", _log_rendering_times)

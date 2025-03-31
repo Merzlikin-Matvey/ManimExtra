@@ -72,6 +72,7 @@ instance/
 docs/_build/
 docs/generated
 docs/media
+rendering_times.csv
 
 # PyBuilder
 .pybuilder/
@@ -156,4 +157,5 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+# JetBrains
 .idea
