@@ -55,8 +55,8 @@ jobs:
 
       - name: Build documentation
         run: |
+          cd docs
           make html
-          cd ..
 
       - name: Set documentation path
         id: set_path
