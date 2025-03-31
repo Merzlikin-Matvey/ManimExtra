@@ -42,18 +42,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install poetry
 
-      - name: Install dependencies
-        run: |
-          cd docs
-          pip install -r requirements.txt
-          cd ..
-
       - name: Build library
         run: |
           cd docs
           poetry install
           poetry build
-          pip install dist/*.whl
+          pip install $(ls dist/*.whl)
+          cd ..
+
+      - name: Install docs dependencies
+        run: |
+          cd docs
+          pip install -r requirements.txt
           cd ..
 
       - name: Build documentation
