@@ -68,7 +68,7 @@ class Bisector(Cevian):
     C : np.ndarray
         The third vertex of the triangle.
 
-    Examples:
+    Examples
     ---------
     .. manimextra:: BisectorExample
         :save_last_frame:
