@@ -1,3 +1,5 @@
+from manim.typing import Point3DLike
+
 from .default import *
 
 
@@ -18,16 +20,14 @@ __all__ = [
 ]
 
 
-def barycentric_to_cartesian(A, B, C, coordinates) -> np.ndarray:
-    A, B, C, = dot_to_array(A, B, C)
+def barycentric_to_cartesian(A: Point3DLike, B: Point3DLike, C: Point3DLike, coordinates) -> np.ndarray:
     coordinates = np.array(coordinates) / np.array([sum(coordinates)] * 3)
     x = coordinates[0] * A[0] + coordinates[1] * B[0] + coordinates[2] * C[0]
     y = coordinates[0] * A[1] + coordinates[1] * B[1] + coordinates[2] * C[1]
     return np.array([x, y, 0])
 
 
-def trilinear_to_cartesian(A, B, C, coordinates) -> np.ndarray:
-    A, B, C, = dot_to_array(A, B, C)
+def trilinear_to_cartesian(A: Point3DLike, B: Point3DLike, C: Point3DLike, coordinates) -> np.ndarray:
     a, b, c = distance(B, C), distance(A, C), distance(B, A)
     coordinates = np.array(coordinates) * np.array([a, b, c])
     return barycentric_to_cartesian(A, B, C, coordinates)
@@ -42,27 +42,23 @@ def csc(alpha) -> float:
 
 
 class Incenter(Dot):
-    def __init__(self, A, B, C, **kwargs):
-        A, B, C = dot_to_array(A, B, C)
+    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, **kwargs):
         super().__init__(trilinear_to_cartesian(A, B, C, (1, 1, 1)), **kwargs)
 
 
 class Excenter(Dot):
-    def __init__(self, A, B, C, **kwargs):
-        A, B, C = dot_to_array(A, B, C)
+    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, **kwargs):
         super().__init__(trilinear_to_cartesian(A, B, C, (1, -1, 1)), **kwargs)
 
 
 class Centroid(Dot):
-    def __init__(self, A, B, C, **kwargs):
-        A, B, C = dot_to_array(A, B, C)
+    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, **kwargs):
         a, b, c = distance(B, C), distance(A, C), distance(A, B)
         super().__init__(trilinear_to_cartesian(A, B, C, (1 / a, 1 / b, 1 / c)), **kwargs)
 
 
 class Circumcenter(Dot):
-    def __init__(self, A, B, C, **kwargs):
-        A, B, C = dot_to_array(A, B, C)
+    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, **kwargs):
         angle_a = Angle.from_three_points(B, A, C).get_value()
         angle_b = Angle.from_three_points(A, B, C).get_value()
         angle_c = Angle.from_three_points(B, C, A).get_value()
@@ -70,8 +66,7 @@ class Circumcenter(Dot):
 
 
 class Orthocenter(Dot):
-    def __init__(self, A, B, C, **kwargs):
-        A, B, C = dot_to_array(A, B, C)
+    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, **kwargs):
         angle_a = Angle.from_three_points(B, A, C).get_value()
         angle_b = Angle.from_three_points(A, B, C).get_value()
         angle_c = Angle.from_three_points(B, C, A).get_value()
@@ -79,8 +74,7 @@ class Orthocenter(Dot):
 
 
 class NinePointCenter(Dot):
-    def __init__(self, A, B, C, **kwargs):
-        A, B, C = dot_to_array(A, B, C)
+    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, **kwargs):
         angle_a = Angle.from_three_points(B, A, C).get_value()
         angle_b = Angle.from_three_points(A, B, C).get_value()
         angle_c = Angle.from_three_points(B, C, A).get_value()
@@ -89,15 +83,13 @@ class NinePointCenter(Dot):
 
 
 class LemoinePoint(Dot):
-    def __init__(self, A, B, C, **kwargs):
-        A, B, C = dot_to_array(A, B, C)
+    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, **kwargs):
         a, b, c = distance(B, C), distance(A, C), distance(A, B)
         super().__init__(trilinear_to_cartesian(A, B, C, (a, b, c)), **kwargs)
 
 
 class GergonnePoint(Dot):
-    def __init__(self, A, B, C, **kwargs):
-        A, B, C = dot_to_array(A, B, C)
+    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, **kwargs):
         a, b, c = distance(B, C), distance(A, C), distance(A, B)
         super().__init__(trilinear_to_cartesian(A, B, C, (
             (b * c / (b + c - a)), (c * a / (c + a - b)), (a * b / (a + b - c))
@@ -105,8 +97,7 @@ class GergonnePoint(Dot):
 
 
 class NagelPoint(Dot):
-    def __init__(self, A, B, C, **kwargs):
-        A, B, C = dot_to_array(A, B, C)
+    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, **kwargs):
         a, b, c = distance(B, C), distance(A, C), distance(A, B)
         super().__init__(trilinear_to_cartesian(A, B, C, (
             ((b + c - a) / a), ((c + a - b) / b), ((a + b - c) / c)
@@ -114,8 +105,7 @@ class NagelPoint(Dot):
 
 
 class Mittenpunkt(Dot):
-    def __init__(self, A, B, C, **kwargs):
-        A, B, C = dot_to_array(A, B, C)
+    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, **kwargs):
         a, b, c = distance(B, C), distance(A, C), distance(A, B)
         super().__init__(trilinear_to_cartesian(A, B, C, (
             (b + c - a), (c + a - b), (a + b - c)
@@ -123,8 +113,7 @@ class Mittenpunkt(Dot):
 
 
 class SpiekerCenter(Dot):
-    def __init__(self, A, B, C, **kwargs):
-        A, B, C = dot_to_array(A, B, C)
+    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, **kwargs):
         a, b, c = distance(B, C), distance(A, C), distance(A, B)
         super().__init__(trilinear_to_cartesian(A, B, C, (
             (b * c * (b + c)), (a * c * (a + c)), (b * a * (b + a))
@@ -132,8 +121,7 @@ class SpiekerCenter(Dot):
 
 
 class FeuerbachPoint(Dot):
-    def __init__(self, A, B, C, **kwargs):
-        A, B, C = dot_to_array(A, B, C)
+    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, **kwargs):
         angle_a = Angle.from_three_points(B, A, C).get_value()
         angle_b = Angle.from_three_points(A, B, C).get_value()
         angle_c = Angle.from_three_points(B, C, A).get_value()
@@ -143,8 +131,7 @@ class FeuerbachPoint(Dot):
 
 
 class FermatPoint(Dot):
-    def __init__(self, A, B, C, **kwargs):
-        A, B, C = dot_to_array(A, B, C)
+    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, **kwargs):
         angle_a = Angle.from_three_points(B, A, C).get_value()
         angle_b = Angle.from_three_points(A, B, C).get_value()
         angle_c = Angle.from_three_points(B, C, A).get_value()

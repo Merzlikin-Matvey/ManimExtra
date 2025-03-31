@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-from manim.constants import *
+
+from manim.typing import Point3DLike
 
 from .default import *
 from .intersection import intersection_circles
@@ -26,13 +27,12 @@ class Tangent(Line):
     ----------
     circle : Circle
         The circle to which the tangent is drawn.
-    dot : Dot
+    dot : Point3DLike
         The point from which the tangent is drawn. It can be on the circle or outside the circle.
-    is_other_tangent : bool, optional
-        If True, the tangent is drawn from the other intersection point of the circle and the line, by default False.
+    is_other_tangent : bool, optionally
+        If True, the tangent is drawn from the other intersection point of the circle and the line, by default, False.
     """
-    def __init__(self, circle: Circle, dot: Dot, is_other_tangent=False, **kwargs):
-        dot = dot_to_array(dot)[0]
+    def __init__(self, circle: Circle, dot: Point3DLike, is_other_tangent=False, **kwargs):
         if circle.pow(dot) < 0:
             raise Exception("Dot is inside the circle")
 
@@ -56,15 +56,14 @@ class Incircle(Circle):
 
     Parameters
     ----------
-    A : np.ndarray
+    A : Point3DLike
         The first vertex of the triangle.
-    B : np.ndarray
+    B : Point3DLike
         The second vertex of the triangle.
-    C : np.ndarray
+    C : Point3DLike
         The third vertex of the triangle.
     """
-    def __init__(self, A, B, C, *args, **kwargs):
-        A, B, C = dot_to_array(A, B, C)
+    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, *args, **kwargs):
         I = Incenter(A, B, C).get_center()
         a = distance(B, C)
         b = distance(A, C)
@@ -80,15 +79,14 @@ class Circumcircle(Circle):
 
     Parameters
     ----------
-    A : np.ndarray
+    A : Point3DLike
         The first vertex of the triangle.
-    B : np.ndarray
+    B : Point3DLike
         The second vertex of the triangle.
-    C : np.ndarray
+    C : Point3DLike
         The third vertex of the triangle.
     """
-    def __init__(self, A, B, C, *args, **kwargs):
-        A, B, C = dot_to_array(A, B, C)
+    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, *args, **kwargs):
         O = Circumcenter(A, B, C).get_center()
         r = distance(O, A)
         super().__init__(radius=r, arc_center=O, *args, **kwargs)
@@ -100,15 +98,14 @@ class NinePointCircle(Circle):
 
     Parameters
     ----------
-    A : np.ndarray
+    A : Point3DLike
         The first vertex of the triangle.
-    B : np.ndarray
+    B : Point3DLike
         The second vertex of the triangle.
-    C : np.ndarray
+    C : Point3DLike
         The third vertex of the triangle.
     """
-    def __init__(self, A, B, C, *args, **kwargs):
-        A, B, C = dot_to_array(A, B, C)
+    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, *args, **kwargs):
         r = distance(Circumcenter(A, B, C).get_center(), A) / 2
         print(r)
         O = NinePointCenter(A, B, C).get_center()
@@ -121,15 +118,14 @@ class CarnotCircle(Circle):
 
     Parameters
     ----------
-    A : np.ndarray
+    A : Point3DLike
         The first vertex of the triangle.
-    B : np.ndarray
+    B : Point3DLike
         The second vertex of the triangle.
-    C : np.ndarray
+    C : Point3DLike
         The third vertex of the triangle.
     """
-    def __init__(self, A, B, C, *args, **kwargs):
-        A, B, C = dot_to_array(A, B, C)
+    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, *args, **kwargs):
         circle = Circumcircle(A, B, C)
         circle.rotate(PI, about_point=Line(A, C).get_projection(circle.get_center()))
         super().__init__(radius=circle.get_radius(), arc_center=circle.get_center(), *args, **kwargs)
