@@ -1,4 +1,3 @@
-from typing import Sequence
 import svgelements as se
 
 from manim import (
@@ -6,6 +5,7 @@ from manim import (
     Mobject
 )
 from manim.constants import *
+from manim.typing import Point3DLike
 
 from ..useful_in_development import *
 from ..geometry.default import Line
@@ -21,14 +21,12 @@ class Bracket(VMobjectFromSVGPath):
 
     Examples
     --------
-    A simple arc of angle Pi.
-
     .. manimextra:: BracketExample
         :save_last_frame:
 
         class BracketExample(Scene):
             def construct(self):
-                sq = Square(color=RED, fill_opacity=0.5)
+                sq = Square(color=BLUE, fill_opacity=0.5)
                 bracket = Bracket(sq, buff=0.1)
                 self.add(sq, bracket)
     """
@@ -64,22 +62,36 @@ class BracketBetweenPoints(Bracket):
 
     Parameters
     ----------
-    point_1 : Sequence[float], optional
+    point_1 : Point3DLike, optional
         The first point, by default ORIGIN
-    point_2 : Sequence[float], optional
+    point_2 : Point3DLike, optional
         The second point, by default ORIGIN
-    direction : Sequence[float], optional
+    direction : Point3DLike, optional
         The direction of the bracket, by default ORIGIN
+
+    Examples
+    --------
+    .. manimextra:: BracketBetweenPointsExample
+        :save_last_frame:
+
+        class BracketBetweenPointsExample(Scene):
+            def construct(self):
+                A = Dot(LEFT + DOWN)
+                B = Dot(RIGHT + UP)
+                bracket = BracketBetweenPoints(A, B, buff=0.1)
+                self.add(A, B, bracket)
+
     """
     def __init__(
         self,
-        point_1: Sequence[float] = LEFT,
-        point_2: Sequence[float] = RIGHT,
-        direction: Sequence[float] | None = ORIGIN,
+        point_1: Point3DLike = LEFT,
+        point_2: Point3DLike = RIGHT,
+        direction: Point3DLike | None = ORIGIN,
         **kwargs,
     ):
+        point_1, point_2 = dot_to_array(point_1, point_2)
         if all(direction == ORIGIN):
-            line_vector = np.array(point_2) - np.array(point_1)
+            line_vector = point_2 - point_1
             direction = np.array([line_vector[1], -line_vector[0], 0])
             direction = direction / np.linalg.norm(direction)
         super().__init__(Line(point_1, point_2), direction=direction, **kwargs)

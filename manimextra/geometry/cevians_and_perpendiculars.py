@@ -1,9 +1,10 @@
 from __future__ import annotations
 
+from ..useful_in_development import *
+
 from .default import Line, Angle
 from manim import VGroup
 from manim.constants import PI
-from manim.typing import Point3DLike
 
 __all__ = [
     "Cevian",
@@ -23,17 +24,17 @@ class Cevian(Line):
 
     Parameters
     ----------
-    A : Point3DLike
+    A : np.ndarray
         The first vertex of the triangle.
-    B : Point3DLike
+    B : np.ndarray
         The second vertex of the triangle. Cevian passes through this point.
-    C : Point3DLike
+    C : np.ndarray
         The third vertex of the triangle.
     alpha : float, optional
         The proportion of the cevian, by default 0.35. Let D be the foot of the cevian, then the proportion is the AD:AC ratio.
     """
-
-    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, alpha: float = 0.35, **kwargs):
+    def __init__(self, A, B, C, alpha=0.35, **kwargs):
+        A, B, C = dot_to_array(A, B, C)
         D = Line(A, C).point_from_proportion(alpha)
 
         self.foot = D
@@ -44,10 +45,10 @@ class Cevian(Line):
 
         super().__init__(B, D, **kwargs)
 
-    def get_foot(self) -> Point3DLike:
+    def get_foot(self) -> np.ndarray:
         return self.foot
 
-    def get_vertex(self) -> Point3DLike:
+    def get_vertex(self) -> np.ndarray:
         return self.general_vertex
 
     def get_proportion(self) -> float:
@@ -60,20 +61,20 @@ class Bisector(Cevian):
 
     Parameters
     ----------
-    A : Point3DLike
+    A : np.ndarray
         The first vertex of the triangle.
-    B : Point3DLike
+    B : np.ndarray
         The second vertex of the triangle.
-    C : Point3DLike
+    C : np.ndarray
         The third vertex of the triangle.
     """
-
-    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, **kwargs):
+    def __init__(self, A, B, C, **kwargs):
+        A, B, C = dot_to_array(A, B, C)
         alpha = ((Line(A, C).get_length() * Line(A, B).get_length()) /
                  (Line(B, C).get_length() + Line(A, B).get_length())) / Line(A, C).get_length()
         super().__init__(A, B, C, alpha, **kwargs)
 
-    def get_bisected_angles(self, radius_alpha: float = 1.1, **kwargs) -> VGroup:
+    def get_bisected_angles(self, radius_alpha=1.1, *args, **kwargs) -> VGroup(Angle, Angle):
         first_angle = Angle.from_three_points(self.extra_vertex_1, self.general_vertex, self.foot, **kwargs)
         kwargs['radius'] = first_angle.radius * radius_alpha
         second_angle = Angle.from_three_points(self.extra_vertex_2, self.general_vertex, self.foot, **kwargs)
@@ -86,18 +87,18 @@ class Median(Cevian):
 
     Parameters
     ----------
-    A : Point3DLike
+    A : np.ndarray
         The first vertex of the triangle.
-    B : Point3DLike
+    B : np.ndarray
         The second vertex of the triangle.
-    C : Point3DLike
+    C : np.ndarray
         The third vertex of the triangle.
     """
-
-    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, **kwargs):
+    def __init__(self, A, B, C, **kwargs):
+        A, B, C = dot_to_array(A, B, C)
         super().__init__(A, B, C, 0.5, **kwargs)
 
-    def get_equal_segments(self, **kwargs) -> VGroup:
+    def get_equal_segments(self, **kwargs) -> VGroup(Line, Line):
         return VGroup(
             Line(self.extra_vertex_1, self.foot).equal(**kwargs),
             Line(self.extra_vertex_2, self.foot).equal(**kwargs),
@@ -110,17 +111,17 @@ class Symmedian(Cevian):
 
     Parameters
     ----------
-    A : Point3DLike
+    A : np.ndarray
         The first vertex of the triangle.
-    B : Point3DLike
+    B : np.ndarray
         The second vertex of the triangle.
-    C : Point3DLike
+    C : np.ndarray
         The third vertex of the triangle
     """
-
-    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, **kwargs):
+    def __init__(self, A, B, C, **kwargs):
+        A, B, C = dot_to_array(A, B, C)
         a, b, c = Line(B, C).get_length(), Line(A, C).get_length(), Line(A, B).get_length()
-        alpha = c ** 2 / (a ** 2 + c ** 2)
+        alpha = c**2 / (a**2 + c**2)
         super().__init__(A, B, C, alpha=alpha, **kwargs)
 
 
@@ -132,16 +133,15 @@ class Perpendicular(Line):
     ----------
     line : Line
         The line to which the perpendicular line is drawn.
-    dot : Point3DLike
+    dot : np.ndarray
         The point through which the perpendicular line passes.
     length : float, optional
         The length of the perpendicular line, by default 1.0.
-    rotate : bool, optionally
-        Use if you want the perpendicular to be in the other direction, by default, False.
+    rotate : bool, optional
+        Use if you want the perpendicular to be in the other direction, by default False.
     """
-
-    def __init__(self, line: Line, dot: Point3DLike, length: float = 1.0, rotate: bool = False, **kwargs):
-        X = dot
+    def __init__(self, line: Line, dot, length=1.0, rotate=False, **kwargs):
+        X = dot_to_array(dot)[0]
         A, B = line.get_start(), line.get_end()
         if Line(A, B).is_point_in_line(X):
             perpendicular = Line(A, X).rotate(
@@ -156,18 +156,18 @@ class Perpendicular(Line):
         super().__init__(perpendicular.get_start(), perpendicular.get_end(), **kwargs)
 
     def get_line(self) -> Line:
-        return self.line
+        return self.linez
 
-    def get_vertex(self) -> Point3DLike:
+    def get_vertex(self) -> np.ndarray:
         return self.vertex
 
-    def get_foot(self) -> Point3DLike:
+    def get_foot(self) -> np.ndarray:
         return self.foot
 
-    def get_angles(self, **kwargs) -> VGroup:
+    def get_angles(self, **kwargs):
         return VGroup(
-            Angle.from_three_points(self.vertex, self.foot, self.line.get_start(), elbow=True, **kwargs),
-            Angle.from_three_points(self.vertex, self.foot, self.line.get_end(), elbow=True, **kwargs)
+            Angle.from_three_points(self.vertex, self.dot, self.line.get_start(), elbow=True, **kwargs),
+            Angle.from_three_points(self.vertex, self.dot, self.line.get_end(), elbow=True, **kwargs)
         )
 
 
@@ -182,8 +182,7 @@ class PerpendicularBisector(Line):
     length : float, optional
         The length of the perpendicular bisector, by default 1.0.
     """
-
-    def __init__(self, line: Line, length: float = 1, **kwargs):
+    def __init__(self, line: Line, length=1, **kwargs):
         line_1 = Perpendicular(line=line, dot=line.get_center(), length=length / 2, rotate=False)
         line_2 = Perpendicular(line=line, dot=line.get_center(), length=length / 2, rotate=True)
 
@@ -192,7 +191,7 @@ class PerpendicularBisector(Line):
 
         super().__init__(line_1.get_end(), line_2.get_end(), **kwargs)
 
-    def get_angles(self, **kwargs) -> VGroup:
+    def get_angles(self, **kwargs):
         """
         Get all the angles formed by the perpendicular bisector.
 
@@ -213,33 +212,33 @@ class Altitude(Perpendicular):
 
     Parameters
     ----------
-    A : Point3DLike
+    A : np.ndarray
         The first vertex of the triangle.
-    B : Point3DLike
+    B : np.ndarray
         The second vertex of the triangle.
-    C : Point3DLike
+    C : np.ndarray
         The third vertex of the triangle.
     """
-
-    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, **kwargs):
+    def __init__(self, A, B, C, **kwargs):
+        A, B, C = dot_to_array(A, B, C)
         line = Line(A, C)
         super().__init__(line, B, **kwargs)
 
 
 class EuclidLine(Line):
     """
-    A class to represent an EuclidLine for a triangle.This line is parallel to AC, and pass through B
+    A class to represent a EuclidLine for a triangle.This line is parallel to AC and we pass through B
 
     Parameters
     ----------
-    A : Point3DLike
+    A : np.ndarray
         The first vertex of the triangle.
-    B : Point3DLike
+    B : np.ndarray
         The second vertex of the triangle.
-    C : Point3DLike
+    C : np.ndarray
         The third vertex of the triangle.
     """
-
-    def __init__(self, A: Point3DLike, B: Point3DLike, C: Point3DLike, **kwargs):
+    def __init__(self, A, B, C, **kwargs):
+        A, B, C = dot_to_array(A, B, C)
         line = Line(A, C).move_to(B)
         super().__init__(line.get_start(), line.get_end(), **kwargs)

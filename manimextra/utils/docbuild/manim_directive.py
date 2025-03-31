@@ -295,9 +295,6 @@ class ManimExtraDirective(Directive):
             f"{clsname}().render()",
         ]
 
-        print("КОД ТУТ")
-        print(code)
-
         try:
             with tempconfig(example_config):
                 run_time = timeit(lambda: exec("\n".join(code), globals()), number=1)
