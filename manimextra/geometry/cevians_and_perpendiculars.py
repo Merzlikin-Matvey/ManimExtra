@@ -69,7 +69,7 @@ class Bisector(Cevian):
         The third vertex of the triangle.
 
     Examples
-    ---------
+    ----------
     .. manimextra:: BisectorExample
         :save_last_frame:
 
