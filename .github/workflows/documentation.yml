@@ -44,22 +44,18 @@ jobs:
 
       - name: Build library
         run: |
-          cd docs
           poetry install
           poetry build
           pip install $(ls dist/*.whl)
-          cd ..
 
       - name: Install docs dependencies
         run: |
           cd docs
           pip install -r requirements.txt
-          cd ..
 
       - name: Build documentation
         run: |
-          cd docs
-          make html
+           make html
           cd ..
 
       - name: Set documentation path
