@@ -337,29 +337,31 @@
 <li><p><strong>A</strong> (<em>np.ndarray</em>) – The first vertex of the triangle.</p></li>
 <li><p><strong>B</strong> (<em>np.ndarray</em>) – The second vertex of the triangle.</p></li>
 <li><p><strong>C</strong> (<em>np.ndarray</em>) – The third vertex of the triangle.</p></li>
-<li><p><strong>Examples</strong></p></li>
-<li><p><strong>---------</strong></p></li>
-<li><p><strong>manimextra:</strong> (<em>..</em>) – <p>BisectorExample: :save_last_frame:</p>
-<dl>
-<dt>class BisectorExample(Scene):</dt><dd><dl>
-<dt>def construct(self):</dt><dd><p>A = Dot(DOWN + LEFT).set_z_index(1)
-B = Dot(0.3 * LEFT + 1.5 * UP).set_z_index(1)
-C = Dot(DOWN + 2 * RIGHT)</p>
-<p>a = Line(B, C, color=BLUE)
-b = Line(A, C, color=BLUE)
-c = Line(A, B, color=BLUE)</p>
-<p>bisector = Bisector(A, B, C, color=YELLOW)
-angles = bisector.get_bisected_angles()
-self.add(A, B, C, a, b, c, bisector, angles)</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</p></li>
 </ul>
 </dd>
 </dl>
-<p class="rubric">Methods</p>
+<p class="rubric">Examples</p>
+<div id="bisectorexample" class="admonition admonition-manim-example">
+<p class="admonition-title">Example: BisectorExample <a class="headerlink" href="#bisectorexample">¶</a></p><img alt="../_images/BisectorExample-1.png" class="align-center" src="../_images/BisectorExample-1.png" />
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">manim</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">manimextra</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">BisectorExample</span><span class="p">(</span><span class="n">Scene</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">construct</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="n">Dot</span><span class="p">(</span><span class="n">DOWN</span> <span class="o">+</span> <span class="n">LEFT</span><span class="p">)</span><span class="o">.</span><span class="n">set_z_index</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">B</span> <span class="o">=</span> <span class="n">Dot</span><span class="p">(</span><span class="mf">0.3</span> <span class="o">*</span> <span class="n">LEFT</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">UP</span><span class="p">)</span><span class="o">.</span><span class="n">set_z_index</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">C</span> <span class="o">=</span> <span class="n">Dot</span><span class="p">(</span><span class="n">DOWN</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">RIGHT</span><span class="p">)</span>
+
+        <span class="n">a</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">BLUE</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">BLUE</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">BLUE</span><span class="p">)</span>
+
+        <span class="n">bisector</span> <span class="o">=</span> <span class="n">Bisector</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">YELLOW</span><span class="p">)</span>
+        <span class="n">angles</span> <span class="o">=</span> <span class="n">bisector</span><span class="o">.</span><span class="n">get_bisected_angles</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">bisector</span><span class="p">,</span> <span class="n">angles</span><span class="p">)</span>
+</pre></div>
+</div>
+</div><p class="rubric">Methods</p>
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
