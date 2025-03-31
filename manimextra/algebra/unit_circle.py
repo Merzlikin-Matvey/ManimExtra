@@ -115,6 +115,18 @@ class UnitCircle(VGroup):
         The font size of the labels. Default to 32.
     fractions : bool, optional
         Whether to use fraction in the labels. Default to True.
+
+    Examples
+    --------
+    .. manimextra:: UnitCircleExample
+        :save_last_frame:
+
+        class UnitCircleExample(Scene):
+            def construct(self):
+                circle = UnitCircle()
+                circle.add_point(PI / 2, "\dfrac{\pi}{2}")
+                circle.add_point(PI, "\pi")
+                self.add(circle)
     """
     def __init__(self, point=0, radius=1.5, color=BLUE, label_buff=0.2, font_size=32, fractions=True):
         self.circle = Circle(radius=radius, color=color)
@@ -173,9 +185,12 @@ class UnitCircle(VGroup):
     def add_point(self, point, label):
         dot = Dot(self.circle.point_at_angle(point))
         if isinstance(label, str):
-            label = MathTex(label, font_size=self.font_size).next_to(dot, Line(self.circle.get_center(),
-                                                                               dot).get_unit_vector(),
-                                                                     buff=self.label_buff)
+            print(Line(self.get_center(), dot.get_center()).get_unit_vector())
+            label = MathTex(label,
+                            font_size=self.font_size
+                    ).next_to(dot,
+                              np.round(Line(self.get_center(), dot.get_center()).get_unit_vector(), 1),
+                              buff=self.label_buff)
         self.dots.add(dot)
         self.labels.add(label)
         return VGroup(dot, label)

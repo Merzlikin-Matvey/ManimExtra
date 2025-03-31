@@ -22,6 +22,19 @@ class SystemOfEquations(VGroup):
         The buffer between equations. Default to 0.2.
     buff_between_brace_and_equations : float, optional
         The buffer between brace and equations. Default to 0.05.
+
+    Examples
+    --------
+    .. manimextra:: SystemOfEquationsExample
+        :save_last_frame:
+
+        class SystemOfEquationsExample(Scene):
+            def construct(self):
+                system = SystemOfEquations(
+                    MathTex("x^2", "+", "y^2", "=", "9"),
+                    MathTex("y", "=", "x", "+", "1")
+                )
+                self.add(system)
     """
     def __init__(
             self,
