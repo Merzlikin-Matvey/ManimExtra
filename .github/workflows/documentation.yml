@@ -68,13 +68,13 @@ jobs:
           name: documentation
           path: docs/_build/html
 
-        deploy:
-          needs: build
-          runs-on: ubuntu-22.04
-          if: github.ref == 'refs/heads/main'
-          steps:
-            - name: Download documentation
-              uses: actions/download-artifact@v3
-              with:
-                name: documentation
-                path: docs/_build/html
+  deploy:
+    needs: build
+    runs-on: ubuntu-22.04
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Download documentation
+        uses: actions/download-artifact@v3
+        with:
+          name: documentation
+          path: docs/_build/html
