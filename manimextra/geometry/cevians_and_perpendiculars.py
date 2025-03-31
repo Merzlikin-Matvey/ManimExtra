@@ -75,9 +75,9 @@ class Bisector(Cevian):
 
         class BisectorExample(Scene):
             def construct(self):
-                A = Dot(DOWN + LEFT).set_z_index(1)
-                B = Dot(0.3 * LEFT + 1.5 * UP).set_z_index(1)
-                C = Dot(DOWN + 2 * RIGHT)
+                A = Dot(DOWN + 4 * LEFT).set_z_index(1)
+                B = Dot(1.5 * UP + 1.5 * LEFT).set_z_index(1)
+                C = Dot(DOWN + 4 * RIGHT)
 
                 a = Line(B, C, color=BLUE)
                 b = Line(A, C, color=BLUE)
@@ -86,6 +86,7 @@ class Bisector(Cevian):
                 bisector = Bisector(A, B, C, color=YELLOW)
                 angles = bisector.get_bisected_angles()
                 self.add(A, B, C, a, b, c, bisector, angles)
+
 
 
     """
