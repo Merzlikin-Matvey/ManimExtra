@@ -62,16 +62,25 @@ jobs:
         id: set_path
         run: echo "::set-output name=doc_path::docs/_build/html"
 
+      - name: Upload documentation
+        uses: actions/upload-artifact@v2
+        with:
+          name: documentation
+          path: docs/_build/html
+
   deploy:
     needs: build
     runs-on: ubuntu-22.04
     if: github.ref == 'refs/heads/main'
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Download documentation
+        uses: actions/download-artifact@v2
+        with:
+          name: documentation
+          path: docs/_build/html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ needs.build.outputs.doc_path }}
+          publish_dir: docs/_build/html
