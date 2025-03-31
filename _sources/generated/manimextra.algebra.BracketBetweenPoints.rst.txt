@@ -1,0 +1,36 @@
+﻿BracketBetweenPoints
+====================
+
+Qualified name: ``manimextra.algebra.BracketBetweenPoints``
+
+.. currentmodule:: manimextra.algebra
+
+.. autoclass:: BracketBetweenPoints
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~BracketBetweenPoints.animate
+     ~BracketBetweenPoints.animation_overrides
+     ~BracketBetweenPoints.color
+     ~BracketBetweenPoints.depth
+     ~BracketBetweenPoints.fill_color
+     ~BracketBetweenPoints.height
+     ~BracketBetweenPoints.n_points_per_curve
+     ~BracketBetweenPoints.sheen_factor
+     ~BracketBetweenPoints.stroke_color
+     ~BracketBetweenPoints.width
+   

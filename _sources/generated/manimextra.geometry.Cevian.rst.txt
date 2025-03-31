@@ -1,0 +1,39 @@
+﻿Cevian
+======
+
+Qualified name: ``manimextra.geometry.Cevian``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: Cevian
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+      ~Cevian.get_foot
+      ~Cevian.get_proportion
+      ~Cevian.get_vertex
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~Cevian.animate
+     ~Cevian.animation_overrides
+     ~Cevian.color
+     ~Cevian.depth
+     ~Cevian.fill_color
+     ~Cevian.height
+     ~Cevian.n_points_per_curve
+     ~Cevian.sheen_factor
+     ~Cevian.stroke_color
+     ~Cevian.width
+   

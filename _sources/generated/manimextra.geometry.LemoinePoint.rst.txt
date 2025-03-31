@@ -1,0 +1,36 @@
+﻿LemoinePoint
+============
+
+Qualified name: ``manimextra.geometry.LemoinePoint``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: LemoinePoint
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~LemoinePoint.animate
+     ~LemoinePoint.animation_overrides
+     ~LemoinePoint.color
+     ~LemoinePoint.depth
+     ~LemoinePoint.fill_color
+     ~LemoinePoint.height
+     ~LemoinePoint.n_points_per_curve
+     ~LemoinePoint.sheen_factor
+     ~LemoinePoint.stroke_color
+     ~LemoinePoint.width
+   

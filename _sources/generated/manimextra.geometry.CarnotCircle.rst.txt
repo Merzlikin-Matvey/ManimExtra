@@ -1,0 +1,36 @@
+﻿CarnotCircle
+============
+
+Qualified name: ``manimextra.geometry.CarnotCircle``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: CarnotCircle
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~CarnotCircle.animate
+     ~CarnotCircle.animation_overrides
+     ~CarnotCircle.color
+     ~CarnotCircle.depth
+     ~CarnotCircle.fill_color
+     ~CarnotCircle.height
+     ~CarnotCircle.n_points_per_curve
+     ~CarnotCircle.sheen_factor
+     ~CarnotCircle.stroke_color
+     ~CarnotCircle.width
+   

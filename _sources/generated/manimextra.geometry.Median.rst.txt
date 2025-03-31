@@ -1,0 +1,37 @@
+﻿Median
+======
+
+Qualified name: ``manimextra.geometry.Median``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: Median
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+      ~Median.get_equal_segments
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~Median.animate
+     ~Median.animation_overrides
+     ~Median.color
+     ~Median.depth
+     ~Median.fill_color
+     ~Median.height
+     ~Median.n_points_per_curve
+     ~Median.sheen_factor
+     ~Median.stroke_color
+     ~Median.width
+   

@@ -1,0 +1,17 @@
+﻿Fancy\_label
+============
+
+Qualified name: ``manimextra.animations.Fancy\_label``
+
+.. currentmodule:: manimextra.animations
+
+.. autoclass:: Fancy_label
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+
+   
+   

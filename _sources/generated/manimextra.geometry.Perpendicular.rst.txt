@@ -1,0 +1,40 @@
+﻿Perpendicular
+=============
+
+Qualified name: ``manimextra.geometry.Perpendicular``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: Perpendicular
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+      ~Perpendicular.get_angles
+      ~Perpendicular.get_foot
+      ~Perpendicular.get_line
+      ~Perpendicular.get_vertex
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~Perpendicular.animate
+     ~Perpendicular.animation_overrides
+     ~Perpendicular.color
+     ~Perpendicular.depth
+     ~Perpendicular.fill_color
+     ~Perpendicular.height
+     ~Perpendicular.n_points_per_curve
+     ~Perpendicular.sheen_factor
+     ~Perpendicular.stroke_color
+     ~Perpendicular.width
+   

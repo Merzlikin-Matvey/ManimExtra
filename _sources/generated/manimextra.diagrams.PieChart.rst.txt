@@ -1,0 +1,39 @@
+﻿PieChart
+========
+
+Qualified name: ``manimextra.diagrams.PieChart``
+
+.. currentmodule:: manimextra.diagrams
+
+.. autoclass:: PieChart
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+      ~PieChart.get_labels
+      ~PieChart.get_sector
+      ~PieChart.get_sectors
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~PieChart.animate
+     ~PieChart.animation_overrides
+     ~PieChart.color
+     ~PieChart.depth
+     ~PieChart.fill_color
+     ~PieChart.height
+     ~PieChart.n_points_per_curve
+     ~PieChart.sheen_factor
+     ~PieChart.stroke_color
+     ~PieChart.width
+   

@@ -1,0 +1,36 @@
+﻿Centroid
+========
+
+Qualified name: ``manimextra.geometry.Centroid``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: Centroid
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~Centroid.animate
+     ~Centroid.animation_overrides
+     ~Centroid.color
+     ~Centroid.depth
+     ~Centroid.fill_color
+     ~Centroid.height
+     ~Centroid.n_points_per_curve
+     ~Centroid.sheen_factor
+     ~Centroid.stroke_color
+     ~Centroid.width
+   

@@ -1,0 +1,36 @@
+﻿NinePointCircle
+===============
+
+Qualified name: ``manimextra.geometry.NinePointCircle``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: NinePointCircle
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~NinePointCircle.animate
+     ~NinePointCircle.animation_overrides
+     ~NinePointCircle.color
+     ~NinePointCircle.depth
+     ~NinePointCircle.fill_color
+     ~NinePointCircle.height
+     ~NinePointCircle.n_points_per_curve
+     ~NinePointCircle.sheen_factor
+     ~NinePointCircle.stroke_color
+     ~NinePointCircle.width
+   

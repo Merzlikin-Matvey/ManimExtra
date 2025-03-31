@@ -1,0 +1,36 @@
+﻿EuclidLine
+==========
+
+Qualified name: ``manimextra.geometry.EuclidLine``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: EuclidLine
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~EuclidLine.animate
+     ~EuclidLine.animation_overrides
+     ~EuclidLine.color
+     ~EuclidLine.depth
+     ~EuclidLine.fill_color
+     ~EuclidLine.height
+     ~EuclidLine.n_points_per_curve
+     ~EuclidLine.sheen_factor
+     ~EuclidLine.stroke_color
+     ~EuclidLine.width
+   

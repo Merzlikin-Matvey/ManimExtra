@@ -1,0 +1,36 @@
+﻿Incenter
+========
+
+Qualified name: ``manimextra.geometry.Incenter``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: Incenter
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~Incenter.animate
+     ~Incenter.animation_overrides
+     ~Incenter.color
+     ~Incenter.depth
+     ~Incenter.fill_color
+     ~Incenter.height
+     ~Incenter.n_points_per_curve
+     ~Incenter.sheen_factor
+     ~Incenter.stroke_color
+     ~Incenter.width
+   

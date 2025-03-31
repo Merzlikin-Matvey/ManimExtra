@@ -1,0 +1,37 @@
+﻿Tangent
+=======
+
+Qualified name: ``manimextra.geometry.Tangent``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: Tangent
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+      ~Tangent.get_other_tangent
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~Tangent.animate
+     ~Tangent.animation_overrides
+     ~Tangent.color
+     ~Tangent.depth
+     ~Tangent.fill_color
+     ~Tangent.height
+     ~Tangent.n_points_per_curve
+     ~Tangent.sheen_factor
+     ~Tangent.stroke_color
+     ~Tangent.width
+   

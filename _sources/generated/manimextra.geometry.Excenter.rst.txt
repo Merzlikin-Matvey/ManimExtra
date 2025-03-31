@@ -1,0 +1,36 @@
+﻿Excenter
+========
+
+Qualified name: ``manimextra.geometry.Excenter``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: Excenter
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~Excenter.animate
+     ~Excenter.animation_overrides
+     ~Excenter.color
+     ~Excenter.depth
+     ~Excenter.fill_color
+     ~Excenter.height
+     ~Excenter.n_points_per_curve
+     ~Excenter.sheen_factor
+     ~Excenter.stroke_color
+     ~Excenter.width
+   

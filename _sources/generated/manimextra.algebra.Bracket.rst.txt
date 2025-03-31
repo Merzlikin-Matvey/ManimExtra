@@ -1,0 +1,36 @@
+﻿Bracket
+=======
+
+Qualified name: ``manimextra.algebra.Bracket``
+
+.. currentmodule:: manimextra.algebra
+
+.. autoclass:: Bracket
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~Bracket.animate
+     ~Bracket.animation_overrides
+     ~Bracket.color
+     ~Bracket.depth
+     ~Bracket.fill_color
+     ~Bracket.height
+     ~Bracket.n_points_per_curve
+     ~Bracket.sheen_factor
+     ~Bracket.stroke_color
+     ~Bracket.width
+   

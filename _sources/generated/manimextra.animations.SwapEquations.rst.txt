@@ -1,0 +1,28 @@
+﻿SwapEquations
+=============
+
+Qualified name: ``manimextra.animations.SwapEquations``
+
+.. currentmodule:: manimextra.animations
+
+.. autoclass:: SwapEquations
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+      ~SwapEquations.finish
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~SwapEquations.run_time
+   

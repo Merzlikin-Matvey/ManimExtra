@@ -1,0 +1,36 @@
+﻿NinePointCenter
+===============
+
+Qualified name: ``manimextra.geometry.NinePointCenter``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: NinePointCenter
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~NinePointCenter.animate
+     ~NinePointCenter.animation_overrides
+     ~NinePointCenter.color
+     ~NinePointCenter.depth
+     ~NinePointCenter.fill_color
+     ~NinePointCenter.height
+     ~NinePointCenter.n_points_per_curve
+     ~NinePointCenter.sheen_factor
+     ~NinePointCenter.stroke_color
+     ~NinePointCenter.width
+   

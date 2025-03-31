@@ -1,0 +1,36 @@
+﻿Orthocenter
+===========
+
+Qualified name: ``manimextra.geometry.Orthocenter``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: Orthocenter
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~Orthocenter.animate
+     ~Orthocenter.animation_overrides
+     ~Orthocenter.color
+     ~Orthocenter.depth
+     ~Orthocenter.fill_color
+     ~Orthocenter.height
+     ~Orthocenter.n_points_per_curve
+     ~Orthocenter.sheen_factor
+     ~Orthocenter.stroke_color
+     ~Orthocenter.width
+   

@@ -1,0 +1,36 @@
+﻿NagelPoint
+==========
+
+Qualified name: ``manimextra.geometry.NagelPoint``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: NagelPoint
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~NagelPoint.animate
+     ~NagelPoint.animation_overrides
+     ~NagelPoint.color
+     ~NagelPoint.depth
+     ~NagelPoint.fill_color
+     ~NagelPoint.height
+     ~NagelPoint.n_points_per_curve
+     ~NagelPoint.sheen_factor
+     ~NagelPoint.stroke_color
+     ~NagelPoint.width
+   

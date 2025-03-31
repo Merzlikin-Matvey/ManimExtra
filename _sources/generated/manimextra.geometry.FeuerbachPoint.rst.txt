@@ -1,0 +1,36 @@
+﻿FeuerbachPoint
+==============
+
+Qualified name: ``manimextra.geometry.FeuerbachPoint``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: FeuerbachPoint
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~FeuerbachPoint.animate
+     ~FeuerbachPoint.animation_overrides
+     ~FeuerbachPoint.color
+     ~FeuerbachPoint.depth
+     ~FeuerbachPoint.fill_color
+     ~FeuerbachPoint.height
+     ~FeuerbachPoint.n_points_per_curve
+     ~FeuerbachPoint.sheen_factor
+     ~FeuerbachPoint.stroke_color
+     ~FeuerbachPoint.width
+   

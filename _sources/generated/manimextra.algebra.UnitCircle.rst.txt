@@ -1,0 +1,52 @@
+﻿UnitCircle
+==========
+
+Qualified name: ``manimextra.algebra.UnitCircle``
+
+.. currentmodule:: manimextra.algebra
+
+.. autoclass:: UnitCircle
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+      ~UnitCircle.add_point
+      ~UnitCircle.change_right_point
+      ~UnitCircle.get_abscissa_point
+      ~UnitCircle.get_arc
+      ~UnitCircle.get_center
+      ~UnitCircle.get_ordinate_point
+      ~UnitCircle.hide_axes
+      ~UnitCircle.hide_horizontal
+      ~UnitCircle.hide_labels
+      ~UnitCircle.hide_vertical
+      ~UnitCircle.normalize_labels
+      ~UnitCircle.point_at_angle
+      ~UnitCircle.show_axes
+      ~UnitCircle.show_horizontal
+      ~UnitCircle.show_labels
+      ~UnitCircle.show_vertical
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~UnitCircle.animate
+     ~UnitCircle.animation_overrides
+     ~UnitCircle.color
+     ~UnitCircle.depth
+     ~UnitCircle.fill_color
+     ~UnitCircle.height
+     ~UnitCircle.n_points_per_curve
+     ~UnitCircle.sheen_factor
+     ~UnitCircle.stroke_color
+     ~UnitCircle.width
+   

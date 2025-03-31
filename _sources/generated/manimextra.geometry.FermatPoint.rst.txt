@@ -1,0 +1,36 @@
+﻿FermatPoint
+===========
+
+Qualified name: ``manimextra.geometry.FermatPoint``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: FermatPoint
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~FermatPoint.animate
+     ~FermatPoint.animation_overrides
+     ~FermatPoint.color
+     ~FermatPoint.depth
+     ~FermatPoint.fill_color
+     ~FermatPoint.height
+     ~FermatPoint.n_points_per_curve
+     ~FermatPoint.sheen_factor
+     ~FermatPoint.stroke_color
+     ~FermatPoint.width
+   

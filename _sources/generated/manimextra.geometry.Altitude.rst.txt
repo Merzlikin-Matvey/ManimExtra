@@ -1,0 +1,36 @@
+﻿Altitude
+========
+
+Qualified name: ``manimextra.geometry.Altitude``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: Altitude
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~Altitude.animate
+     ~Altitude.animation_overrides
+     ~Altitude.color
+     ~Altitude.depth
+     ~Altitude.fill_color
+     ~Altitude.height
+     ~Altitude.n_points_per_curve
+     ~Altitude.sheen_factor
+     ~Altitude.stroke_color
+     ~Altitude.width
+   

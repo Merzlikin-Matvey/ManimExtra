@@ -1,0 +1,28 @@
+﻿TransformSystem
+===============
+
+Qualified name: ``manimextra.animations.TransformSystem``
+
+.. currentmodule:: manimextra.animations
+
+.. autoclass:: TransformSystem
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+      ~TransformSystem.clean_up_from_scene
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~TransformSystem.run_time
+   

@@ -1,0 +1,36 @@
+﻿Circumcircle
+============
+
+Qualified name: ``manimextra.geometry.Circumcircle``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: Circumcircle
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~Circumcircle.animate
+     ~Circumcircle.animation_overrides
+     ~Circumcircle.color
+     ~Circumcircle.depth
+     ~Circumcircle.fill_color
+     ~Circumcircle.height
+     ~Circumcircle.n_points_per_curve
+     ~Circumcircle.sheen_factor
+     ~Circumcircle.stroke_color
+     ~Circumcircle.width
+   

@@ -1,0 +1,36 @@
+﻿Symmedian
+=========
+
+Qualified name: ``manimextra.geometry.Symmedian``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: Symmedian
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~Symmedian.animate
+     ~Symmedian.animation_overrides
+     ~Symmedian.color
+     ~Symmedian.depth
+     ~Symmedian.fill_color
+     ~Symmedian.height
+     ~Symmedian.n_points_per_curve
+     ~Symmedian.sheen_factor
+     ~Symmedian.stroke_color
+     ~Symmedian.width
+   

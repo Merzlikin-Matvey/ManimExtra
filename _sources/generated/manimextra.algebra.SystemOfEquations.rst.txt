@@ -1,0 +1,37 @@
+﻿SystemOfEquations
+=================
+
+Qualified name: ``manimextra.algebra.SystemOfEquations``
+
+.. currentmodule:: manimextra.algebra
+
+.. autoclass:: SystemOfEquations
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+      ~SystemOfEquations.swap
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~SystemOfEquations.animate
+     ~SystemOfEquations.animation_overrides
+     ~SystemOfEquations.color
+     ~SystemOfEquations.depth
+     ~SystemOfEquations.fill_color
+     ~SystemOfEquations.height
+     ~SystemOfEquations.n_points_per_curve
+     ~SystemOfEquations.sheen_factor
+     ~SystemOfEquations.stroke_color
+     ~SystemOfEquations.width
+   

@@ -1,0 +1,36 @@
+﻿Mittenpunkt
+===========
+
+Qualified name: ``manimextra.geometry.Mittenpunkt``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: Mittenpunkt
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~Mittenpunkt.animate
+     ~Mittenpunkt.animation_overrides
+     ~Mittenpunkt.color
+     ~Mittenpunkt.depth
+     ~Mittenpunkt.fill_color
+     ~Mittenpunkt.height
+     ~Mittenpunkt.n_points_per_curve
+     ~Mittenpunkt.sheen_factor
+     ~Mittenpunkt.stroke_color
+     ~Mittenpunkt.width
+   

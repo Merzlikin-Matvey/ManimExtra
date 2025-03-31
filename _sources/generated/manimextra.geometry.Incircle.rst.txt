@@ -1,0 +1,36 @@
+﻿Incircle
+========
+
+Qualified name: ``manimextra.geometry.Incircle``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: Incircle
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~Incircle.animate
+     ~Incircle.animation_overrides
+     ~Incircle.color
+     ~Incircle.depth
+     ~Incircle.fill_color
+     ~Incircle.height
+     ~Incircle.n_points_per_curve
+     ~Incircle.sheen_factor
+     ~Incircle.stroke_color
+     ~Incircle.width
+   

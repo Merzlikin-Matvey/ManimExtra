@@ -1,0 +1,36 @@
+﻿SpiekerCenter
+=============
+
+Qualified name: ``manimextra.geometry.SpiekerCenter``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: SpiekerCenter
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~SpiekerCenter.animate
+     ~SpiekerCenter.animation_overrides
+     ~SpiekerCenter.color
+     ~SpiekerCenter.depth
+     ~SpiekerCenter.fill_color
+     ~SpiekerCenter.height
+     ~SpiekerCenter.n_points_per_curve
+     ~SpiekerCenter.sheen_factor
+     ~SpiekerCenter.stroke_color
+     ~SpiekerCenter.width
+   

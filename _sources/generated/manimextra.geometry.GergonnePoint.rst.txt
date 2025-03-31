@@ -1,0 +1,36 @@
+﻿GergonnePoint
+=============
+
+Qualified name: ``manimextra.geometry.GergonnePoint``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: GergonnePoint
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~GergonnePoint.animate
+     ~GergonnePoint.animation_overrides
+     ~GergonnePoint.color
+     ~GergonnePoint.depth
+     ~GergonnePoint.fill_color
+     ~GergonnePoint.height
+     ~GergonnePoint.n_points_per_curve
+     ~GergonnePoint.sheen_factor
+     ~GergonnePoint.stroke_color
+     ~GergonnePoint.width
+   

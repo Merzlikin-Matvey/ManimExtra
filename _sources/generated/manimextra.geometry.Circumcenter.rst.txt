@@ -1,0 +1,36 @@
+﻿Circumcenter
+============
+
+Qualified name: ``manimextra.geometry.Circumcenter``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: Circumcenter
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~Circumcenter.animate
+     ~Circumcenter.animation_overrides
+     ~Circumcenter.color
+     ~Circumcenter.depth
+     ~Circumcenter.fill_color
+     ~Circumcenter.height
+     ~Circumcenter.n_points_per_curve
+     ~Circumcenter.sheen_factor
+     ~Circumcenter.stroke_color
+     ~Circumcenter.width
+   

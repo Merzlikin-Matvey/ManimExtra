@@ -1,0 +1,37 @@
+﻿Bisector
+========
+
+Qualified name: ``manimextra.geometry.Bisector``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: Bisector
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+      ~Bisector.get_bisected_angles
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~Bisector.animate
+     ~Bisector.animation_overrides
+     ~Bisector.color
+     ~Bisector.depth
+     ~Bisector.fill_color
+     ~Bisector.height
+     ~Bisector.n_points_per_curve
+     ~Bisector.sheen_factor
+     ~Bisector.stroke_color
+     ~Bisector.width
+   

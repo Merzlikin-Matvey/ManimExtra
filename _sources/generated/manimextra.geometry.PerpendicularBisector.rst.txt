@@ -1,0 +1,37 @@
+﻿PerpendicularBisector
+=====================
+
+Qualified name: ``manimextra.geometry.PerpendicularBisector``
+
+.. currentmodule:: manimextra.geometry
+
+.. autoclass:: PerpendicularBisector
+   :show-inheritance:
+   :members:
+   :private-members:
+
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+      
+      ~PerpendicularBisector.get_angles
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+     
+     ~PerpendicularBisector.animate
+     ~PerpendicularBisector.animation_overrides
+     ~PerpendicularBisector.color
+     ~PerpendicularBisector.depth
+     ~PerpendicularBisector.fill_color
+     ~PerpendicularBisector.height
+     ~PerpendicularBisector.n_points_per_curve
+     ~PerpendicularBisector.sheen_factor
+     ~PerpendicularBisector.stroke_color
+     ~PerpendicularBisector.width
+   
