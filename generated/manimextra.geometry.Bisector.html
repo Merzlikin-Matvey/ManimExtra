@@ -337,6 +337,25 @@
 <li><p><strong>A</strong> (<em>np.ndarray</em>) – The first vertex of the triangle.</p></li>
 <li><p><strong>B</strong> (<em>np.ndarray</em>) – The second vertex of the triangle.</p></li>
 <li><p><strong>C</strong> (<em>np.ndarray</em>) – The third vertex of the triangle.</p></li>
+<li><p><strong>Examples</strong></p></li>
+<li><p><strong>---------</strong></p></li>
+<li><p><strong>manimextra:</strong> (<em>..</em>) – <p>BisectorExample: :save_last_frame:</p>
+<dl>
+<dt>class BisectorExample(Scene):</dt><dd><dl>
+<dt>def construct(self):</dt><dd><p>A = Dot(DOWN + LEFT).set_z_index(1)
+B = Dot(0.3 * LEFT + 1.5 * UP).set_z_index(1)
+C = Dot(DOWN + 2 * RIGHT)</p>
+<p>a = Line(B, C, color=BLUE)
+b = Line(A, C, color=BLUE)
+c = Line(A, B, color=BLUE)</p>
+<p>bisector = Bisector(A, B, C, color=YELLOW)
+angles = bisector.get_bisected_angles()
+self.add(A, B, C, a, b, c, bisector, angles)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</p></li>
 </ul>
 </dd>
 </dl>
