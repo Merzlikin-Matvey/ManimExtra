@@ -14,11 +14,16 @@ def Fancy_label(text: manim.Tex, mode='normal', buff=manim.MED_LARGE_BUFF):
     """
     A function that writes text at the very top and adapts to its length
 
-    :param text:
-    :param mode:
-    :param buff:
-    :return:
+    Examples:
+        .. manimextra:: FancyLabelExample
+
+            class FancyLabelExample(manim.Scene):
+                def construct(self):
+                    label = Tex("Hello, World!")
+                    self.play(Fancy_label(label))
+                    self.wait()
     """
+
     mode = mode.lower()
     modes = ['vlow', 'low', 'normal', 'fast', 'vfast']
 

@@ -180,9 +180,25 @@ class UnitCircle(VGroup):
         return self
 
     def get_center(self):
+        """
+        Get the center of the circle.
+        Override because the center of VGroup is different from the center of the circle.
+        """
         return self.circle.get_center()
 
     def add_point(self, point, label):
+        """
+        Add a point to the unit circle.
+
+        Parameters
+        ----------
+        point
+        label
+
+        Returns
+        -------
+
+        """
         dot = Dot(self.circle.point_at_angle(point))
         if isinstance(label, str):
             print(Line(self.get_center(), dot.get_center()).get_unit_vector())
