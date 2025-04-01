@@ -334,9 +334,9 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>A</strong> (<em>np.ndarray</em>) – The first vertex of the triangle.</p></li>
-<li><p><strong>B</strong> (<em>np.ndarray</em>) – The second vertex of the triangle.</p></li>
-<li><p><strong>C</strong> (<em>np.ndarray</em>) – The third vertex of the triangle.</p></li>
+<li><p><strong>A</strong> (<em>Point3DLike</em>) – The first vertex of the triangle.</p></li>
+<li><p><strong>B</strong> (<em>Point3DLike</em>) – The second vertex of the triangle.</p></li>
+<li><p><strong>C</strong> (<em>Point3DLike</em>) – The third vertex of the triangle.</p></li>
 </ul>
 </dd>
 </dl>
@@ -348,9 +348,9 @@
 
 <span class="k">class</span><span class="w"> </span><span class="nc">BisectorExample</span><span class="p">(</span><span class="n">Scene</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">construct</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">A</span> <span class="o">=</span> <span class="n">Dot</span><span class="p">(</span><span class="n">DOWN</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">LEFT</span><span class="p">)</span><span class="o">.</span><span class="n">set_z_index</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="n">Dot</span><span class="p">(</span><span class="mf">1.5</span> <span class="o">*</span> <span class="n">DOWN</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">LEFT</span><span class="p">)</span><span class="o">.</span><span class="n">set_z_index</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">B</span> <span class="o">=</span> <span class="n">Dot</span><span class="p">(</span><span class="mf">1.5</span> <span class="o">*</span> <span class="n">UP</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">LEFT</span><span class="p">)</span><span class="o">.</span><span class="n">set_z_index</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">C</span> <span class="o">=</span> <span class="n">Dot</span><span class="p">(</span><span class="n">DOWN</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">RIGHT</span><span class="p">)</span>
+        <span class="n">C</span> <span class="o">=</span> <span class="n">Dot</span><span class="p">(</span><span class="mf">1.5</span> <span class="o">*</span> <span class="n">DOWN</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">RIGHT</span><span class="p">)</span>
 
         <span class="n">a</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">BLUE</span><span class="p">)</span>
         <span class="n">b</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">BLUE</span><span class="p">)</span>
