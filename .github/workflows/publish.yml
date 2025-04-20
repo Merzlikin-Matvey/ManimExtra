@@ -11,11 +11,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-22.04
-
     outputs:
       version: ${{ steps.get_version.outputs.version }}
       is_prerelease: ${{ steps.check_prerelease.outputs.is_prerelease }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -32,7 +30,7 @@ jobs:
 
       - name: Build library
         run: |
-          poetry build
+          poetry build -f sdist -f wheel
 
       - name: Get version
         id: get_version
@@ -41,6 +39,7 @@ jobs:
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
 
       - name: Check if version is pre-release
+        id: check_prerelease
         run: |
           if [[ "${{ steps.get_version.outputs.version }}" == *"alpha"* || "${{ steps.get_version.outputs.version }}" == *"beta"* ]]; then
             echo "is_prerelease=true" >> $GITHUB_OUTPUT
@@ -54,28 +53,104 @@ jobs:
           name: built_library
           path: ./dist
 
-
   create_github_release:
     needs: build
-
     runs-on: ubuntu-latest
-
+    outputs:
+      new_version: ${{ steps.compare_versions.outputs.new_version }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Download built library artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: built_library
+          path: artifact
 
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.13'
 
-      - name: Install poetry
+      - name: Set env variables from build outputs
+        run: |
+          echo "VERSION=${{ needs.build.outputs.version }}" >> $GITHUB_ENV
+          echo "IS_PRERELEASE=${{ needs.build.outputs.is_prerelease }}" >> $GITHUB_ENV
+
+      - name: Get latest release version
+        id: get_latest_release
+        run: |
+          LATEST_RELEASE=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r .tag_name)
+          echo "LATEST_RELEASE=${LATEST_RELEASE}" >> $GITHUB_ENV
+
+      - name: Compare versions
+        id: compare_versions
+        run: |
+          if [ "${{ env.VERSION }}" != "${{ env.LATEST_RELEASE }}" ]; then
+            echo "new_version=true" >> $GITHUB_OUTPUT
+            echo "NEW_VERSION=true" >> $GITHUB_ENV
+          else
+            echo "new_version=false" >> $GITHUB_OUTPUT
+            echo "NEW_VERSION=false" >> $GITHUB_ENV
+          fi
+
+      - name: Create new release
+        if: env.NEW_VERSION == 'true' && env.IS_PRERELEASE == 'false'
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ env.VERSION }}
+          release_name: Release ${{ env.VERSION }}
+          body: |
+            New release ${{ env.VERSION }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+
+      - name: Upload release asset
+        if: env.NEW_VERSION == 'true' && env.IS_PRERELEASE == 'false'
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: artifact/manimextra-${{ env.VERSION }}.tar.gz
+          asset_name: manimextra-${{ env.VERSION }}.tar.gz
+          asset_content_type: application/gzip
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+
+  publish_to_pypi:
+    needs: build
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Download built library artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: built_library
+          path: artifact
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.13'
+
+      - name: Set env variables from build outputs
+        run: |
+          echo "VERSION=${{ needs.build.outputs.version }}" >> $GITHUB_ENV
+          echo "IS_PRERELEASE=${{ needs.build.outputs.is_prerelease }}" >> $GITHUB_ENV
+
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install poetry
+          pip install twine
 
-      - name: Print version
+      - name: Publish to PyPI
+        if: env.IS_PRERELEASE == 'false'
+        env:
+          PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
         run: |
-          echo "Version ${{ needs.build.outputs.version }}"
-
-
+          twine upload -u __token__ -p $PYPI_API_TOKEN artifact/*
