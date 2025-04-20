@@ -1,4 +1,4 @@
-![Main Logo](assets/logo.png)
+![Main Logo](https://raw.githubusercontent.com/Merzlikin-Matvey/ManimExtra/main/assets/logo.png)
 
 <p align="center">
     <a href="https://pypi.org/project/manimextra/">
@@ -52,20 +52,16 @@ from manimextra import *
 
 class TriangleCentersScene(Scene):
     def construct(self):
-        # Define triangle vertices
         A = Dot(3 * LEFT + 2 * DOWN, color=RED)
         B = Dot(2 * LEFT + 3 * UP, color=GREEN)
         C = Dot(3 * RIGHT + 2 * DOWN, color=BLUE)
 
-        # Triangle sides
         sides = VGroup(Line(B, C), Line(A, C), Line(A, B))
 
-        # Centers
         incenter = Incenter(A, B, C).set_color(YELLOW)
         centroid = Centroid(A, B, C).set_color(PURPLE)
         circumcenter = Circumcenter(A, B, C).set_color(ORANGE)
 
-        # Circles
         incircle = Incircle(A, B, C, color=YELLOW, stroke_opacity=0.5)
         circumcircle = Circumcircle(A, B, C, color=ORANGE, stroke_opacity=0.5)
 
@@ -125,11 +121,3 @@ Full documentation with API reference and more examples is available at:
 
 - [ManimExtra Documentation](https://merzlikin-matvey.github.io/ManimExtra/)
 
-You can also build the documentation locally by running:
-
-```bash
-cd docs
-make html
-```
-
-and opening `docs/_build/html/index.html` in your browser.
