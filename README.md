@@ -2,10 +2,10 @@
 
 <p align="center">
     <a href="https://pypi.org/project/manimextra/">
-        <img src="https://img.shields.io/pypi/v/manimextra">
+        <img src="https://img.shields.io/pypi/v/manimextra" alt="Project Version">
     </a>
     <a href="https://github.com/Merzlikin-Matvey/ManimExtra">
-        <img src="https://img.shields.io/github/license/Merzlikin-Matvey/ManimExtra">
+        <img src="https://img.shields.io/github/license/Merzlikin-Matvey/ManimExtra" alt="Project License">
     </a>
 </p>
 

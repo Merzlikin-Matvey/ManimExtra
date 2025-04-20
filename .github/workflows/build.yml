@@ -1,0 +1,44 @@
+name: Build package
+
+on:
+  push:
+    branches:
+      main
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.13'
+
+      - name: Install poetry
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry
+
+      - name: Build library
+        run: |
+          poetry build
+          echo "VERSION=$(poetry version -s)" >> $GITHUB_ENV
+
+      - name: Check if version is pre-release
+        run: |
+          if [[ "${{ env.VERSION }}" == *"alpha"* || "${{ env.VERSION }}" == *"beta"* ]]; then
+            echo "IS_PRERELEASE=true" >> $GITHUB_ENV
+          else
+            echo "IS_PRERELEASE=false" >> $GITHUB_ENV
+          fi
+
+      - name: Upload library
+        uses: actions/upload-artifact@v3
+        with:
+          name: built_library
+          path: ./dist
+
