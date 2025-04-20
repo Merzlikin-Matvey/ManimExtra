@@ -1,12 +1,12 @@
-name: Build package
+name: Build and publish library
 
 on:
   push:
     branches:
-      main
+      - main
   pull_request:
     branches:
-      main
+      - main
 
 jobs:
   build:
@@ -30,7 +30,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install poetry
 
-
       - name: Build library
         run: |
           poetry build
@@ -47,11 +46,34 @@ jobs:
           else
             echo "is_prerelease=false" >> $GITHUB_OUTPUT
           fi
-      
 
       - name: Upload library
         uses: actions/upload-artifact@v4
         with:
           name: built_library
           path: ./dist
+
+  create_github_release:
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.13'
+
+      - name: Install poetry
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry
+
+      - name: Print version
+        run: |
+          echo "Version ${{ needs.build.outputs.version }}"
+
 
