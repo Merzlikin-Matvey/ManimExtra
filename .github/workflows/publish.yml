@@ -138,6 +138,9 @@ jobs:
         with:
           python-version: '3.13'
 
+      - name: List artifact contents
+        run: ls -la artifact
+
       - name: Set env variables from build outputs
         run: |
           echo "VERSION=${{ needs.build.outputs.version }}" >> $GITHUB_ENV
