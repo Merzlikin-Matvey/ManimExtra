@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "manimextra"
-version = "1.12.0"
+version = "1.12.1"
 description = "A library that extends the capabilities of Manim"
 authors = ["Merzlikin-Matvey <merzlikinmatvey01@gmail.com>"]
 license="MIT"
@@ -9,7 +9,7 @@ readme="README.md"
 [tool.poetry.dependencies]
 python = ">=3.12"
 manim = ">=0.18.0"
-setuptools = ">=75.6.0"
+setuptools = ">=79.0.0"
 flake8 = ">=7.1.1"
 
 [build-system]
