@@ -5,12 +5,16 @@ on:
     branches:
       main
   pull_request:
-      branches:
-          main
+    branches:
+      main
 
 jobs:
   build:
     runs-on: ubuntu-22.04
+
+    outputs:
+      version: ${{ steps.get_version.outputs.version }}
+      is_prerelease: ${{ steps.check_prerelease.outputs.is_prerelease }}
 
     steps:
       - name: Checkout code
@@ -26,18 +30,24 @@ jobs:
           python -m pip install --upgrade pip
           pip install poetry
 
+
       - name: Build library
         run: |
           poetry build
-          echo "VERSION=$(poetry version -s)" >> $GITHUB_ENV
+
+      - name: Get version
+        run: |
+          VERSION=$(poetry version -s)
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
 
       - name: Check if version is pre-release
         run: |
-          if [[ "${{ env.VERSION }}" == *"alpha"* || "${{ env.VERSION }}" == *"beta"* ]]; then
-            echo "IS_PRERELEASE=true" >> $GITHUB_ENV
+          if [[ "${{ steps.get_version.outputs.version }}" == *"alpha"* || "${{ steps.get_version.outputs.version }}" == *"beta"* ]]; then
+            echo "is_prerelease=true" >> $GITHUB_OUTPUT
           else
-            echo "IS_PRERELEASE=false" >> $GITHUB_ENV
+            echo "is_prerelease=false" >> $GITHUB_OUTPUT
           fi
+      
 
       - name: Upload library
         uses: actions/upload-artifact@v4
