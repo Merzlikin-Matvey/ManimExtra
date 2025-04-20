@@ -30,7 +30,7 @@ jobs:
 
       - name: Build library
         run: |
-          poetry build -f sdist -f wheel
+          poetry build 
 
       - name: Get version
         id: get_version
