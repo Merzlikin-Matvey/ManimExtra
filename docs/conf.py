@@ -14,6 +14,7 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx_design",
     "sphinx.ext.autosummary",
+    "sphinx_copybutton",
     "manimextra.utils.docbuild.manim_directive",
     "manimextra.utils.docbuild.autocolor_directive",
     "manimextra.utils.docbuild.autoaliasattr_directive",
