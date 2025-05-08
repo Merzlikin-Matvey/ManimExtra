@@ -51,6 +51,20 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y python3-opengl libpango1.0-dev xvfb freeglut3-dev
 
+      - name: Start Xvfb
+        run: |
+          Xvfb :99 -screen 0 1024x768x24 &
+          export DISPLAY=:99
+
+      - name: Install LaTeX dependencies
+        run: |
+          tlmgr update --self
+          tlmgr install \
+          babel-english ctex doublestroke dvisvgm frcursive fundus-calligra jknapltx \
+          mathastext microtype physics preview ragged2e relsize rsfs setspace standalone \
+          wasy wasysym
+            
+
       - name: Download built library artifact
         uses: actions/download-artifact@v4
         with:
