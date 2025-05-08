@@ -35,6 +35,7 @@ jobs:
           path: ./dist
 
   run-tests:
+    needs: build
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout code
@@ -50,9 +51,6 @@ jobs:
         with:
           name: built_library
           path: artifact
-
-      - name: List artifacts
-        run: ls -la ./dist
 
       - name: Install library
         run: |
