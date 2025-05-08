@@ -46,17 +46,19 @@ jobs:
         with:
           python-version: '3.13'
 
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libpango1.0-dev
+
       - name: Download built library artifact
         uses: actions/download-artifact@v4
         with:
           name: built_library
           path: artifact
 
-
-
       - name: Install library
         run: |
-          ls artifact
           pip install artifact/*.tar.gz
 
       - name: Install dev dependencies
