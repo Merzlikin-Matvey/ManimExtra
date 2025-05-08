@@ -51,6 +51,9 @@ jobs:
           name: built_library
           path: artifact
 
+      - name: List artifacts
+        run: ls -la ./dist
+
       - name: Install library
         run: |
           pip install ./artifact/dist/*.whl
