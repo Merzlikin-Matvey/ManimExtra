@@ -14,7 +14,6 @@ def _triangle_points():
     return A, B, C, a, b, c
 
 
-
 def test_bisector():
     A, B, C, a, b, c = _triangle_points()
     bisector = Bisector(A, B, C)
@@ -24,6 +23,7 @@ def test_bisector():
     angle_2 = Angle.from_three_points(C, B, bisector_foot)
 
     assert np.isclose(angle_1.get_value(), angle_2.get_value())
+
 
 def test_cevian_division():
     A, B, C, a, b, c = _triangle_points()
@@ -36,5 +36,3 @@ def test_cevian_division():
     AF = Line(A, foot).get_length()
     ratio = AF / AC
     assert np.isclose(ratio, alpha)
-
-

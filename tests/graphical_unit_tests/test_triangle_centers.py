@@ -4,6 +4,7 @@ from manimextra import *
 
 __module_test__ = "triangle_centers"
 
+
 def _triangle_points():
     A = Dot(2 * DOWN + 3.5 * LEFT).set_z_index(1)
     B = Dot(2.5 * UP + 2 * LEFT).set_z_index(1)
@@ -15,11 +16,13 @@ def _triangle_points():
 
     return A, B, C, a, b, c
 
+
 @frames_comparison()
 def test_excenter(scene):
     A, B, C, a, b, c = _triangle_points()
     excenter = Excenter(A, B, C)
     scene.add(A, B, C, a, b, c, excenter)
+
 
 @frames_comparison()
 def test_centroid(scene):
@@ -27,11 +30,13 @@ def test_centroid(scene):
     centroid = Centroid(A, B, C)
     scene.add(A, B, C, a, b, c, centroid)
 
+
 @frames_comparison()
 def test_circumcenter(scene):
     A, B, C, a, b, c = _triangle_points()
     circumcenter = Circumcenter(A, B, C)
     scene.add(A, B, C, a, b, c, circumcenter)
+
 
 @frames_comparison()
 def test_orthocenter(scene):
@@ -39,11 +44,13 @@ def test_orthocenter(scene):
     orthocenter = Orthocenter(A, B, C)
     scene.add(A, B, C, a, b, c, orthocenter)
 
+
 @frames_comparison()
 def test_nine_point_center(scene):
     A, B, C, a, b, c = _triangle_points()
     nine_point = NinePointCenter(A, B, C)
     scene.add(A, B, C, a, b, c, nine_point)
+
 
 @frames_comparison()
 def test_lemoine_point(scene):
@@ -51,11 +58,13 @@ def test_lemoine_point(scene):
     lemoine = LemoinePoint(A, B, C)
     scene.add(A, B, C, a, b, c, lemoine)
 
+
 @frames_comparison()
 def test_gergonne_point(scene):
     A, B, C, a, b, c = _triangle_points()
     gergonne = GergonnePoint(A, B, C)
     scene.add(A, B, C, a, b, c, gergonne)
+
 
 @frames_comparison()
 def test_nagel_point(scene):
@@ -63,11 +72,13 @@ def test_nagel_point(scene):
     nagel = NagelPoint(A, B, C)
     scene.add(A, B, C, a, b, c, nagel)
 
+
 @frames_comparison()
 def test_mittenpunkt(scene):
     A, B, C, a, b, c = _triangle_points()
     mittenpunkt = Mittenpunkt(A, B, C)
     scene.add(A, B, C, a, b, c, mittenpunkt)
+
 
 @frames_comparison()
 def test_spieker_center(scene):
@@ -75,11 +86,13 @@ def test_spieker_center(scene):
     spieker = SpiekerCenter(A, B, C)
     scene.add(A, B, C, a, b, c, spieker)
 
+
 @frames_comparison()
 def test_feuerbach_point(scene):
     A, B, C, a, b, c = _triangle_points()
     feuerbach = FeuerbachPoint(A, B, C)
     scene.add(A, B, C, a, b, c, feuerbach)
+
 
 @frames_comparison()
 def test_fermat_point(scene):
