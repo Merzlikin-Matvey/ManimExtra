@@ -82,6 +82,9 @@ jobs:
           cd tests
           pip install -r requirements.txt
 
+      - name: Install Cairo
+        run: python .github/scripts/ci_build_cairo.py
+
       - name: Run tests
         run: |
           cd tests
