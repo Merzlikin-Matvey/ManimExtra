@@ -54,7 +54,7 @@ jobs:
 
       - name: Install library
         run: |
-          pip install ./artifact/dist/*.whl
+          pip install ./artifact/dist/*.tar.gz
 
       - name: Install dev dependencies
         run: |
