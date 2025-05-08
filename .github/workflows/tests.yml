@@ -56,8 +56,8 @@ jobs:
 
       - name: Install library
         run: |
-          ls artifact/dist
-          pip install artifact/dist/*.tar.gz
+          ls artifact
+          pip install artifact/*.tar.gz
 
       - name: Install dev dependencies
         run: |
