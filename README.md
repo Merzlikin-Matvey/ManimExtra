@@ -7,6 +7,9 @@
     <a href="https://github.com/Merzlikin-Matvey/ManimExtra">
         <img src="https://img.shields.io/github/license/Merzlikin-Matvey/ManimExtra" alt="Project License">
     </a>
+    <a>
+        <img src="https://github.com/Merzlikin-Matvey/ManimExtra/workflows/Tests/badge.svg" alt="Tests">
+    </a>
 </p>
 
 <p align="center">
