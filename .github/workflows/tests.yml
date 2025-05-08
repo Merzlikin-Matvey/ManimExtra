@@ -83,7 +83,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: Install Cairo
-        run: python .github/scripts/ci_build_cairo.py
+        run: |
+          python .github/scripts/ci_build_cairo.py
+          python .github/scripts/ci_build_cairo.py --set-env-vars
 
       - name: Run tests
         run: |
