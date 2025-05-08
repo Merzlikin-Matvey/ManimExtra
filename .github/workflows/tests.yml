@@ -52,9 +52,12 @@ jobs:
           name: built_library
           path: artifact
 
+
+
       - name: Install library
         run: |
-          pip install ./artifact/dist/*.tar.gz
+          ls artifact/dist
+          pip install artifact/dist/*.tar.gz
 
       - name: Install dev dependencies
         run: |
