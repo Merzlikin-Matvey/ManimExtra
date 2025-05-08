@@ -50,6 +50,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y python3-opengl libpango1.0-dev xvfb freeglut3-dev
+          wget -qO- "https://yihui.org/tinytex/install-bin-unix.sh" | sh
+          echo ${HOME}/.TinyTeX/bin/x86_64-linux >> $GITHUB_PATH
 
       - name: Start Xvfb
         run: |
