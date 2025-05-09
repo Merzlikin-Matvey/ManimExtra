@@ -55,6 +55,8 @@ html_theme_options = {
 
 
 templates_path = ['_templates']
+html_static_path = ['static']
+html_css_files = ['styles.css']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 html_theme = "furo"
