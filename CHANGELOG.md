@@ -4,6 +4,18 @@ All significant changes to the project are recorded in this file
 
 ---
 
+## [1.13] — 2025.05.09
+
+## Added
+- Added tests (unit and graphical)
+- Added CI/CD pipeline for automatic testing
+
+## Changed
+- Refactored all CI/CD pipelines
+
+## Fixed
+- Fixed documentation
+
 ## [1.12] — 2025.04.01
 
 ## Added
