@@ -132,4 +132,4 @@ class CarnotCircle(Circle):
         A, B, C = dot_to_array(A, B, C)
         circle = Circumcircle(A, B, C)
         circle.rotate(PI, about_point=Line(A, C).get_projection(circle.get_center()))
-        super().__init__(radius=circle.get_radius(), arc_center=circle.get_center(), *args, **kwargs)
+        super().__init__(radius=circle.radius, arc_center=circle.get_center(), *args, **kwargs)

@@ -87,7 +87,7 @@ class Angle(manim.Angle):
     def from_three_points(A: Point3DLike, B: Point3DLike, C: Point3DLike, **kwargs):
         angle = Angle(Line(B, A), Line(B, C), **kwargs)
         try:
-            if angle.get_angle_value() > PI:
+            if angle.angle_value > PI:
                 angle = Angle(Line(B, C), Line(B, A), **kwargs)
         except AttributeError:
             if Angle(Line(B, A), Line(B, C)).get_value() > PI:
