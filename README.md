@@ -77,7 +77,7 @@ class FeuerbachTheoremScene(Scene):
 
 ### Example 2: System of Equations Animation
 
-![feuerbach.png](https://raw.githubusercontent.com/Merzlikin-Matvey/ManimExtra/main/assets/equaions.gif)
+![feuerbach.png](https://raw.githubusercontent.com/Merzlikin-Matvey/ManimExtra/main/assets/equations.gif)
 
 
 ```python
