@@ -226,6 +226,7 @@ class Perpendicular(Line):
         self.vertex = X
         self.foot = Line(A, B).get_projection(X)
         self.line = line
+        self.dot = dot
 
         super().__init__(perpendicular.get_start(), perpendicular.get_end(), **kwargs)
 
