@@ -10,6 +10,9 @@
     <a>
         <img src="https://github.com/Merzlikin-Matvey/ManimExtra/workflows/Tests/badge.svg" alt="Tests">
     </a>
+    <a>
+        <img src="https://static.pepy.tech/badge/manimextra" alt="Downloads">
+    </a>
 </p>
 
 <p align="center">
