@@ -47,35 +47,35 @@ And on Linux/MacOS
 
 Below are some complex usage examples combining several objects from ManimExtra.
 
-### Example 1: Triangle Centers and Circles
+### Example 1: Feuerbach Theorem
+![feuerbach.png](https://raw.githubusercontent.com/Merzlikin-Matvey/ManimExtra/main/assets/feuerbach.png)
 
 ```python
 from manim import *
 from manimextra import *
 
-class TriangleCentersScene(Scene):
+class FeuerbachTheoremScene(Scene):
     def construct(self):
-        A = Dot(3 * LEFT + 2 * DOWN, color=RED)
-        B = Dot(2 * LEFT + 3 * UP, color=GREEN)
-        C = Dot(3 * RIGHT + 2 * DOWN, color=BLUE)
-
-        sides = VGroup(Line(B, C), Line(A, C), Line(A, B))
-
-        incenter = Incenter(A, B, C).set_color(YELLOW)
-        centroid = Centroid(A, B, C).set_color(PURPLE)
-        circumcenter = Circumcenter(A, B, C).set_color(ORANGE)
-
-        incircle = Incircle(A, B, C, color=YELLOW, stroke_opacity=0.5)
-        circumcircle = Circumcircle(A, B, C, color=ORANGE, stroke_opacity=0.5)
-
-        self.add(A, B, C, sides)
-        self.play(FadeIn(incenter), FadeIn(incircle))
-        self.play(FadeIn(centroid))
-        self.play(FadeIn(circumcenter), FadeIn(circumcircle))
-        self.wait()
+        A = Dot(2 * DOWN + 4 * LEFT).set_z_index(1)
+        B = Dot(2 * UP + 2.5 * LEFT).set_z_index(1)
+        C = Dot(2 * DOWN + 4 * RIGHT).set_z_index(1)
+        
+        AB = Line(A, B, color=BLUE)
+        BC = Line(B, C, color=BLUE)
+        CA = Line(C, A, color=BLUE)
+        
+        incircle = Incircle(A, B, C, color=YELLOW)
+        nine_point_circle = NinePointCircle(A, B, C, color=GREEN)
+        feuerbach = FeuerbachPoint(A, B, C)
+        
+        
+        self.add(A, B, C, AB, BC, CA, incircle, nine_point_circle, feuerbach)
 ```
 
 ### Example 2: System of Equations Animation
+
+![feuerbach.png](https://raw.githubusercontent.com/Merzlikin-Matvey/ManimExtra/main/assets/equaions.gif)
+
 
 ```python
 from manim import *
@@ -97,25 +97,24 @@ class SystemOfEquationsExample(Scene):
         self.wait()
 ```
 
-### Example 3: Pie Chart and Unit Circle
+### Example 3: Pie Chart 
+
+![piechart.png](https://raw.githubusercontent.com/Merzlikin-Matvey/ManimExtra/main/assets/piechart.png)
+
 
 ```python
 from manim import *
 from manimextra import *
 
-class PieAndCircleScene(Scene):
+class PieChartExample(Scene):
     def construct(self):
-        pie = PieChart(
-            data={"A": 10, "B": 20, "C": 30},
+        pie_chart = PieChart(
+            data={"First": 10, "Second": 20, "Third": 30},
             label_buff=0.7,
             inner_radius=1,
             outer_radius=2
-        ).to_edge(LEFT)
-        circle = UnitCircle().to_edge(RIGHT)
-        circle.add_point(PI / 2, r"\dfrac{\pi}{2}")
-        circle.add_point(PI, r"\pi")
-        self.play(FadeIn(pie), FadeIn(circle))
-        self.wait()
+        )
+        self.add(pie_chart)
 ```
 
 ## Documentation
