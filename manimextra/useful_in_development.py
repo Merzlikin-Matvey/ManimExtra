@@ -5,7 +5,7 @@ import manim
 def dot_to_array(*dots) -> list:
     coordinates = []
     for dot in dots:
-        if isinstance(dot, np.ndarray):
+        if isinstance(dot, (np.ndarray, list, tuple)):
             coordinates.append(dot)
         else:
             try:
